@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>{{title}}</h1>
+<div mat-dialog-content>
+
+  <mat-form-field>
+    <input matInput placeholder="Nombre de Producto" (keyup)="buscarProducto(txtNombre.value)"
+           id="txtNombre" #txtNombre autocomplete="off">
+  </mat-form-field>
+
+  <table mat-table class="table mat-elevation-z8">
+    <thead>
+      <tr>
+        <th style="width: 20%">Codigo</th>
+        <th style="width: 70%">Nombre</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let prod of iProduc">
+        <td mat-cell (dblclick)="onDobleClick(prod.no_parte)"> {{prod.no_parte}} </td>
+        <td mat-cell (dblclick)="onDobleClick(prod.no_parte)"> {{prod.nombre}} </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()" color="primary" cdkFocusInitial>Cancel</button>
+</div>

@@ -1,0 +1,24 @@
+body {
+
+}
+
+.viewPrograms{
+  position: relative;
+  top: 80px;
+  margin-left: 300px;
+  width: 100%;
+  padding: 15px;  
+}
+
+@media screen and (max-width: 900px){
+  .viewPrograms {
+    margin-left: 95px;
+  }
+}
+
+
+@media screen and (max-width: 767px ){
+  .viewPrograms {
+    margin-left: 0px;
+  }
+}

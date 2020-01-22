@@ -1,0 +1,48 @@
+<app-spinner *ngIf="!(gesti && gesti.length)"></app-spinner>
+
+<div class="nav-side-menu" id="navSide" *ngIf="gesti && gesti.length">
+  <div class="brand">{{nameMenu}}</div>
+  <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+  <div class="menu-list">
+
+    <ul id="menu-content" class="menu-content collapse out" *ngFor="let ge of gesti; let i = index">
+      <!--NOMBRE DE GESTIONES-->
+      <li data-toggle="collapse" attr.data-target="#{{ge.codigo}}" class="collapsed">
+        <div class="menuFlex p-2">
+          <i class="fa fa-{{ge.namebmp}} fa-lg mr-2"></i>
+          <div class="nombreButton">{{ge.nombreCorto}}</div>
+          <span class="arrow"></span>
+        </div>          
+        
+      </li>
+
+      <ul data-toggle="collapse" style="background-color:#55789B"
+          class="collapse" id="{{ge.codigo}}"
+          *ngFor="let op of opciones ; let j = index">
+
+        <li data-toggle="collapse" class="collapsed"
+            attr.data-target="#{{ge.codigo+op.Codigo+i.toString()+j.toString()}}">
+          &nbsp;
+          <a><i class="fa fa-plus fa-lg"></i>{{op.Nombre}}</a><span class="arrow"></span>
+        </li>
+
+        <ul *ngIf="prg && prg.length"
+            class="sub-menu collapse "
+            id="{{ge.codigo+op.Codigo+i.toString()+j.toString()}}">
+          <div *ngFor="let pr of prg">
+            <li *ngIf="pr.gesApl==[ge.codigo] && pr.tarea==[op.Codigo]">
+              <a (click)="openTab([pr.describe],pr.nombre)">
+                &nbsp;&nbsp;
+                <i class="fa fa-hand-o-right fa-lg"></i>{{pr.describe}}
+              </a>
+            </li>
+          </div>
+        </ul>
+
+      </ul>
+
+    </ul>    
+
+  </div>
+</div>

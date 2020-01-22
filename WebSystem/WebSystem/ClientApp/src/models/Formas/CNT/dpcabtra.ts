@@ -1,0 +1,36 @@
+export interface IDpcabtra {
+        id?: number;
+        tipo_asi: string;
+        asiento: string;
+        fecha_asi?: Date;
+        desc_asi?: string;
+        beneficiar?: string;
+        debitos?: number;
+        creditos?: number;
+        cedruc?: string;
+        chequeno?: string;
+        usuario?: string;
+        fechasys?: Date;
+        horasys?: string;
+        cerrado?: boolean;
+        anulado?: boolean;
+        fechaanu?: Date;
+        horaanu?: string;
+        usuanu?: string;
+        ges_apl?: string;
+        auditado?: string;
+        factor?: number;
+        ce_autoriz?: string;
+        ce_clave?: string;
+        ce_fecaut?: Date;
+        ce_activo?: string;
+        ce_estado?: string;
+        ce_deserra?: string;
+        proveedor?: string;
+        glosa?: string;
+        base_0?: number;
+        base_12?: number;
+        valiva?: number;
+        total_liq?: number;
+        come_anula?: string;
+}

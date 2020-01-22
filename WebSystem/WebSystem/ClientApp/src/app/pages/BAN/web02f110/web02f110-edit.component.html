@@ -1,0 +1,99 @@
+<form class="text-center border border-light p-1" #forma="ngForm">
+
+  <div class="container animated fadeInRight" id="container2">
+    <div class="form-group row col-sm-12">
+
+      <label for="codigobco" class="lsize100">Codigo:</label>
+      <input class="form-control col-sm-1"
+             type="text"
+             id="codigobco"
+             autocomplete="off"
+             maxlength="3"
+             name="codigobco"
+             [(ngModel)]="ibanco.codigobco"
+             required
+             [disabled]="!isNew"
+             oninput="this.value = this.value.toUpperCase()" />
+
+
+      <label for="nombrebco" class="lsize60">Nombre:</label>
+      <input class="form-control col-sm-5"
+             type="text"
+             id="nombrebco"
+             autocomplete="off"
+             maxlength="100"
+             name="nombrebco"
+             [(ngModel)]="ibanco.nombrebco"
+             oninput="this.value = this.value.toUpperCase()"
+             required />
+
+      <label for="codmov" class="lsize60">Contable:</label>
+      <input class="form-control col-sm-2"
+             type="text"
+             id="codmov"
+             autocomplete="off"
+             maxlength="20"
+             name="codmov"
+             [ngModel]="ibanco.codmov | cuentaAux"
+             (ngModelChange)="ibanco.codmov = $event"
+             (focusout)="cargaCta()"
+             (keyup.enter)="cargaCta()"
+             required />
+      <span class="add-on" (click)="buscarCta()"><i class="fa fa-search"></i></span>
+
+    </div>
+
+    <div class="form-group row col-sm-12">
+
+      <label for="cuentano" class="lsize100"># Cuenta:</label>
+      <input class="form-control col-sm-2"
+             type="text"
+             id="cuentano"
+             autocomplete="off"
+             maxlength="10"
+             name="cuentano"
+             [(ngModel)]="ibanco.cuentano" />
+
+      <mat-checkbox class="marginck col-sm-1"
+                    [(ngModel)]="ibanco.cheque"
+                    name="cheque">Genera CH</mat-checkbox>
+
+      <pre style='display:inline'>      </pre>
+
+      <mat-checkbox class="marginck col-sm-1"
+                    [(ngModel)]="ibanco.pide_cenco"
+                    name="pide_cenco">Pedir Centro de Costos</mat-checkbox>
+
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <label for="numeroch" class="lsize100"># Cheque</label>
+      <input class="form-control col-sm-1"
+             type="number"
+             id="numeroch"
+             name="numeroch"
+             [(ngModel)]="ibanco.numeroch" />
+
+      <label for="formato" class="lsize100">Formato:</label>
+      <input class="form-control col-sm-2"
+             type="text"
+             id="formato"
+             autocomplete="off"
+             maxlength="10"
+             name="formato"
+             [(ngModel)]="ibanco.formato" />
+
+    </div>
+
+    <div class="btn-group m-5">
+      <button type="button" class="btn btn-success" id="btnSave" (click)="saveBco(forma)">
+        <i class="fa fa-floppy-o fa-lg"></i>
+      </button>
+
+      <button type="button" class="btn btn-secondary" id="btnBack" (click)="regresar()">
+        <i class="fa fa-undo fa-lg"></i>
+      </button>
+    </div>
+
+  </div>
+</form>

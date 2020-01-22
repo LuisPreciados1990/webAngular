@@ -1,0 +1,81 @@
+<div class="container-fluid">
+  <div class="row no-gutters">
+    <div class="col">
+      <h1> {{ env.eNomcia }} </h1>
+    </div>
+  </div>
+
+  <div class="row no-gutters">
+    <div class="col">
+      <img src="../../../../assets/images/demoimg.png"
+           alt="logotipo"
+           class="logotipo">
+    </div>
+
+    <div class="col">
+      <h2>ASIENTO CONTABLE</h2>
+      <p>{{ param.tipo+param.numero }}</p>
+    </div>
+  </div>
+
+  <div class="row no-gutters items-group">
+    <div class="col-3 label">
+      <p>EMISION:</p>
+      <p>CONCEPTO:</p>
+    </div>
+
+    <div class="col-9">
+      <p>{{ fechaAsi | date :'fullDate' }}</p>
+      <p>{{concepto}}</p>
+    </div>
+  </div>
+
+  <div class="row no-gutters items-group">
+    <div class="col-2 label">
+      <p>CUENTA</p>
+    </div>
+    <div class="col-5 label">
+      <p>NOMBRE DE LA CUENTA</p>
+    </div>
+    <div class="col-2 label">
+      <p>DEBITOS</p>
+    </div>
+    <div class="col-2 label">
+      <p>CREDITOS</p>
+    </div>
+  </div>
+
+  <div class="row" *ngFor="let t of tb">
+    <p class="col-2"> {{t.codmov}} </p>
+    <p class="col-5"> {{t.nCuenta}} </p>
+    <p class="col-2"> {{t.debe}} </p>
+    <p class="col-2"> {{t.haber}} </p>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-5 offset-md-2"> <p class="label">TOTAL GENERAL US$ </p> </div>
+    <div class="col-md-2"><p class="label">{{totalDebe}}</p></div>
+    <div class="col-md-2"><p class="label">{{totalHaber}}</p></div>
+  </div>
+
+
+  <div class="row top-buffer">
+    <div class="col-md-3">
+      <p class="disclaimer signature-field"></p>
+      <p>Preparado Por</p>
+    </div>
+
+    <div class="col-md-3 offset-md-1">
+      <p class="disclaimer signature-field"></p>
+      <p>Revisado Por</p>
+    </div>
+
+    <div class="col-md-3 offset-md-1">
+      <p class="disclaimer signature-field"></p>
+      <p>Aprobado Por</p>
+    </div>
+  </div>
+
+</div>

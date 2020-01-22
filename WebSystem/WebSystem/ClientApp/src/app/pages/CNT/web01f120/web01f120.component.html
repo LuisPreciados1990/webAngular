@@ -1,0 +1,105 @@
+<form class="text-center border border-light p-1" #forma="ngForm">
+  <div class="container animated fadeInRight" id="container1">
+
+    <div class="row m-3">
+      <div class="col-2">
+        <button type="button"
+                class="btn btn-info" id="btnNew"
+                (click)="isEdit = true"
+                [disabled]="isEdit">
+          <i class="fa fa-pencil-square-o fa-3x"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="form-group row col-sm-12 m-2">
+      <p><strong>BALANCE GENERAL</strong></p>
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <label for="txtActivo" class="lsize80">Activo:</label>
+      <input class="form-control col-sm-2"
+             type="text"
+             id="txtActivo"
+             autocomplete="off"
+             maxlength="20"
+             [(ngModel)]="_dasbal.activo"
+             name="activo"
+             required
+             [disabled]="!isEdit" />
+
+      <label for="txtPasivo" class="lsize80">Pasivo:</label>
+      <input class="form-control col-sm-2"
+             type="text"
+             id="txtPasivo"
+             autocomplete="off"
+             maxlength="20"
+             [(ngModel)]="_dasbal.pasivo"
+             name="pasivo"
+             required
+             [disabled]="!isEdit" />
+
+      <label for="txtPatri" class="lsize80">Patrimonio:</label>
+      <input class="form-control col-sm-2"
+             type="text"
+             id="txtPatri"
+             autocomplete="off"
+             maxlength="20"
+             [(ngModel)]="_dasbal.capital"
+             name="capital"
+             required
+             [disabled]="!isEdit" />
+    </div>
+
+    <div class="form-group row col-sm-12 m-2">
+      <p><strong>PERDIDAS Y GANANCIAS</strong></p>      
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <label for="txting" class="lsize80">Ingresos:</label>
+      <input class="form-control col-sm-2"
+             type="text"
+             id="txting"
+             autocomplete="off"
+             maxlength="20"
+             [(ngModel)]="_dasbal.ingresos"
+             name="ingresos"
+             required
+             [disabled]="!isEdit" />
+
+      <mat-checkbox class="marginck col-sm-1"
+                    [(ngModel)]="_dasbal.in_cencos"
+                    name="in_cencos">C. Costo</mat-checkbox>
+
+      <label for="txtegre" class="lsize110">Egresos\Gastos:</label>
+      <input class="form-control col-sm-2"
+             type="text"
+             id="txtegre"
+             autocomplete="off"
+             maxlength="20"
+             [(ngModel)]="_dasbal.egresos"
+             name="egresos"
+             required
+             [disabled]="!isEdit" />
+
+      <mat-checkbox class="marginck col-sm-1"
+                    [(ngModel)]="_dasbal.eg_cencos"
+                    name="eg_cencos">C. Costo</mat-checkbox>
+
+    </div>
+
+    <div class="btn-group m-3">
+      <button type="button" class="btn btn-success" id="btnSave"
+              (click)="save(forma)"
+              [disabled]="!isEdit">
+        <i class="fa fa-floppy-o fa-lg"></i>
+      </button>
+
+      <button type="button" class="btn btn-secondary" id="btnBack"
+              (click)="isEdit = false; cargarData()"
+              [disabled]="!isEdit">
+        <i class="fa fa-undo fa-lg"></i>
+      </button>
+    </div>
+  </div>
+</form>

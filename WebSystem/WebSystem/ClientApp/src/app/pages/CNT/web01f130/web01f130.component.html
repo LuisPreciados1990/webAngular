@@ -1,0 +1,66 @@
+<form class="text-center border border-light p-1" #forma="ngForm">
+  <div class="container animated fadeInRight" id="container1">
+
+    <div class="row">
+      <div class="col-2">
+        <button type="button" class="btn btn-info" id="btnNew" (click)="openForm('')">
+          <i class="fa fa-plus fa-3x"></i>
+        </button>
+      </div>
+      <div class="col-5">
+        <mat-form-field>
+          <input matInput placeholder="Busqueda" (keyup)="buscarInfo(txtNombre.value)"
+                 id="txtNombre" #txtNombre autocomplete="off">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <table mat-table class="table mat-elevation-z8">
+      <thead>
+        <tr>
+          <th style="width: 5%">Código</th>
+          <th style="width: 30%">Nombre</th>
+          <th style="width: 10%">Asiento</th>
+          <th style="width: 5%">Tipo</th>
+          <th style="width: 10%">Forma</th>
+          <th style="width: 5%">Boucher</th>
+          <th style="width: 5%">Anexo</th>
+          <th style="width: 5%"></th>
+          <th style="width: 5%"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let dpn of iDpnum | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+          <td mat-cell> {{dpn.tipo_asi}} </td>
+          <td mat-cell> {{dpn.nombre}} </td>
+          <td mat-cell> {{dpn.asiento}} </td>
+          <td mat-cell> {{dpn.tipo_com}} </td>
+          <td mat-cell> {{dpn.nomforma}} </td>
+          <td mat-cell> {{dpn.ch_boucher}} </td>
+          <td mat-cell> {{dpn.tiene_at}} </td>
+          <td mat-cell>
+            <button type="button" class="btn btn-info" (click)="openForm(dpn.tipo_asi)">
+              <i class="fa fa-pencil-square-o fa-lg"></i>
+            </button>
+          </td>
+          <td mat-cell>
+            <button type="button" class="btn btn-danger" (click)="delete(dpn)">
+              <i class="fa fa-times fa-lg"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+    <div>
+      <ngb-pagination [(page)]="page"
+                      [pageSize]="pageSize"
+                      [collectionSize]="iDpnum.length"
+                      [maxSize]="10"
+                      [rotate]="true"
+                      [ellipses]="false"
+                      [boundaryLinks]="true"></ngb-pagination>
+    </div>
+  </div>  
+</form>

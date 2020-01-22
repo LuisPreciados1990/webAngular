@@ -1,0 +1,483 @@
+<form class="text-center border border-light p-1 animated fadeInRight">
+
+  <div class="container animated fadeIn" id="container1">
+
+    <div class="form-group row col-sm-12">
+      <label for="txtTrn" class="lsize75">Trn:</label>
+      <input class="form-control col-sm-1"
+             type="text" id="txtTrn"
+             autocomplete="off"
+             maxlength="2"
+             name="tipo_asi" #txtTrn
+             [(ngModel)]="_tipoTrn.tipo_asi"             
+             (focusout)="cargaTrn()"
+             (keyup.enter)="cargaTrn()"
+             [disabled]="(_detalleT.length) || nuevoReten || nuevoItem"
+             oninput="this.value = this.value.toUpperCase()" />
+      <span class="add-on" (click)="buscarTrn()"><i class="fa fa-search"></i></span>
+
+      <input class="form-control searchInput col-sm-4"
+             type="text"
+             id="txtnTrn"
+             disabled
+             name="nombreTrn"
+             [(ngModel)]="_tipoTrn.nombre"/>
+
+      <label for="txtNumero" class="lsize60">Numero</label>
+      <input class="form-control col-sm-1"
+             type="text"
+             placeholder="00000000"
+             id="txtNumero"
+             [disabled]="(_detalleT.length) || nuevoReten || nuevoItem"
+             name="asiento"
+             [(ngModel)]="_tipoTrn.asiento"
+             maxlength="8"
+             (focusout)="trnOpciones()"/>
+
+      <label for="txtFecha" class="lsize50">Fecha</label>
+      <input class="form-control col-sm-2"
+             type="date"
+             id="txtFecha"
+             name="fecha_asi"
+             [ngModel]="_cabecera.fecha_asi | date:'yyyy-MM-dd'"
+             (ngModelChange)="_cabecera.fecha_asi = $event"/>
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <label for="txtComenta" class="lsize75">Concepto</label>
+      <input class="form-control col-sm-9"
+             type="text"
+             id="txtComenta"
+             name="desc_asi" #txtComenta
+             [(ngModel)]="_cabecera.desc_asi" />
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <label for="txtBenef" class="lsize75">Beneficiario</label>
+      <input class="form-control col-sm-6"
+             type="text" id="txtBenef"
+             name="beneficiar" #txtBenef
+             [(ngModel)]="_cabecera.beneficiar"
+             [disabled]="!ngEnabledEgreso" />
+
+      <label for="txtCedRuc" class="lsize75">Cédula/RUC</label>
+      <input class="form-control col-sm-2"
+             type="text"
+             id="txtCedRuc"
+             name="cedruc" #txtCedRuc
+             [(ngModel)]="_cabecera.cedruc"
+             [disabled]="!ngEnabledEgreso" />
+    </div>
+
+  </div>
+
+  <div class="container animated fadeIn" id="container2" *ngIf="!nuevoReten && !nuevoEgreso">
+    <div class="form-group row col-sm-12">
+
+      <button type="button" class="btn btn-primary" id="btnPlus" (click)="indexTempo=0; clickNuevoItem(true);"
+              [disabled]="showFormItem">
+        <i class="fa fa-plus-circle fa-lg"></i>
+      </button>
+
+      <button type="button" class="btn btn-primary" id="btnReten" (click)="newReten()"
+              [disabled]="showFormItem">
+        <i class="fa fa-bars fa-lg"></i>&nbsp; RETENCION
+      </button>
+
+      <button type="button" class="btn btn-primary" id="btnEgreso" (click)="newEgreso()"
+              [disabled]="showFormItem"
+              *ngIf="ngEnabledEgreso">
+        <i class="fa fa-credit-card fa-lg"></i>&nbsp; EGRESO
+      </button>
+
+    </div>
+  </div>
+
+  <div class="container animated fadeIn" id="containerP" *ngIf="showFormItem">
+    <div class="form-group row col-sm-12">
+      <label for="codmov" class="lsize75">Cuenta:</label>
+      <input class="form-control col-sm-2"
+             type="text"
+             id="codmov"
+             autocomplete="off"
+             maxlength="20"
+             name="codmov" #txtCta
+             [ngModel]="_detalle.codmov | cuentaAux"
+             (ngModelChange)="_detalle.codmov = $event"
+             (focusout)="cargaCta()"
+             (keyup.enter)="cargaCta()" />
+      <span class="add-on" (click)="buscarCta()"><i class="fa fa-search"></i></span>
+
+      <input class="form-control col-sm-6"
+             type="text"
+             id="nombreCta"
+             autocomplete="off"
+             name="nombreCta" #nombreCta
+             [(ngModel)]="_detalle.nombreCta"
+             disabled />
+
+      <label for="tipo" class="lsize40">Tipo :</label>
+      <input class="form-control col-sm-1"
+             type="text"
+             id="tipo"
+             name="tipo"
+             [(ngModel)]="_detalle.tipo"
+             maxlength="2"
+             oninput="this.value = this.value.toUpperCase()"/>
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <label for="refer" class="lsize75">Referencia :</label>
+      <input class="form-control col-sm-2"
+             type="text"
+             id="refer"
+             name="refer"
+             [(ngModel)]="_detalle.refer"
+             oninput="this.value = this.value.toUpperCase()" />
+
+      <label for="debe" class="lsize45">Debe :</label>
+      <input class="form-control col-sm-1"
+             type="number"
+             id="debe"
+             name="debe"
+             [(ngModel)]="_detalle.debe"
+             (focusout)="_detalle.debe>0 ? _detalle.haber = 0 : null" />
+
+      <label for="haber" class="lsize45">Haber :</label>
+      <input class="form-control col-sm-1"
+             type="number"
+             id="haber"
+             name="haber"
+             [(ngModel)]="_detalle.haber"
+             (focusout)="_detalle.haber>0 ? _detalle.debe = 0 : null" />
+
+      <label for="concepto" class="lsize60">Concepto:</label>
+      <input class="form-control col-sm-4"
+             type="text"
+             id="concepto"
+             name="concepto"
+             [(ngModel)]="_detalle.concepto"
+             maxlength="100"/>
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <button type="button" class="btn btn-success" id="btnSave" (click)="saveTempo()">
+        <i class="fa fa-floppy-o fa-lg"></i>
+      </button>
+
+      <button type="button" class="btn btn-warning" id="btnCancel" (click)="indexTempo=-1 ; clickNuevoItem(false)">
+        <i class="fa fa-undo fa-lg"></i>
+      </button>
+    </div>
+
+  </div>
+
+  <div class="container m-1 animated fadeIn" id="containerR" *ngIf="nuevoReten">
+    <div class="form-group row col-sm-12">
+
+      <label for="cboTpRete" class="lsize100">Tipo Retención</label>
+      <select class="form-control col-sm-3" id="cboTpRete" [(ngModel)]="ngTpRete" name="cboTpRete" #cboTpRete>
+        <option *ngFor="let ret of iReten" [value]="ret.tipo_asi">{{ret.nombre}}</option>
+      </select>
+
+      <label for="txtNumRt" class="lsize40">Nº Rt.</label>
+      <input class="form-control col-sm-1" type="text"
+             [(ngModel)]="ngNumRt" name="txtNumRt" #txtNumRt
+             id="txtNumRt" maxlength="8" />
+
+      <label for="cboCompRt" class="lsize85">Comprobante</label>
+      <select class="form-control col-sm-2" id="cboCompRt" [(ngModel)]="ngCompRt" name="cboCompRt" #cboCompRt>
+        <option *ngFor="let com of iTpComp" [value]="com.codigo">{{com.nombre}}</option>
+      </select>
+
+      <label for="txtFechacad" class="lsize80">Fec. Caduca</label>
+      <input class="form-control col-sm-1" type="text"
+             [(ngModel)]="ngFechacad" name="txtFechacad" #txtFechacad
+             id="txtFechacad" maxlength="10" />
+
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <label for="txtNumComproRt" class="lsize100">Nº Comproba.</label>
+      <input class="form-control col-sm-2" type="text"
+             [(ngModel)]="ngNumComproRt" name="txtNumComproRt" #txtNumComproRt
+             id="txtNumComproRt" maxlength="15" />
+
+      <label for="txtAutCmpVta" class="lsize100">Nº Aut. Venta</label>
+      <input class="form-control col-sm-5" type="text"
+             [(ngModel)]="ngAutCmpVta" name="txtAutCmpVta" #txtAutCmpVta
+             id="txtAutCmpVta" maxlength="49" />      
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <label for="txtprov" class="lsize100">Proveedor:</label>
+      <input class="form-control col-sm-1"
+             type="text" id="txtprov"
+             autocomplete="off"
+             maxlength="6"
+             name="ngProvee" #txtprov
+             [(ngModel)]="ngProvee"
+             (focusout)="cargaProv()"
+             (keyup.enter)="cargaProv()"
+             oninput="this.value = this.value.toUpperCase()" />
+      <span class="add-on" (click)="buscarProv()"><i class="fa fa-search"></i></span>
+
+      <input class="form-control searchInput col-sm-7"
+             type="text"
+             id="ngNProvee"
+             disabled
+             name="ngNProvee"
+             [(ngModel)]="ngNProvee"/>
+
+      <button type="button" class="btn btn-info col-sm-1" id="btnAddRt"
+              (click)="addReten()">
+        <i class="fa fa-plus fa-lg"></i>
+      </button>
+
+    </div>
+
+    <div class="form-group row col-sm-12">
+
+      <table class="table m-1">
+        <thead>
+          <tr>
+            <th style="width: 5%">Tipo</th>
+            <th style="width: 8%">Nº RT</th>
+            <th style="width: 15%">Comprobante</th>
+            <th style="width: 10%">Nº Comp.</th>
+            <th style="width: 10%">Caducidad</th>
+            <th style="width: 40%">Autorización</th>
+            <th style="width: 5%"></th>
+            <th style="width: 5%"></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <ng-container *ngFor="let tmp of tempoR; let i = index">
+
+            <tr>
+              <td>{{tmp.tipoRt}}</td>
+              <td>{{tmp.numeroRt}}</td>
+              <td>{{tmp.nombreComp}}</td>
+              <td>{{tmp.numeroComp}}</td>
+              <td>{{tmp.fechacComp}}</td>
+              <td>{{tmp.nAutorVta}}</td>
+              <td>
+                <button type="button" class="btn btn-info" (click)="openCloseRow(i)">
+                  <span *ngIf="rowSelected!=i; else close"><i class="fa fa-level-down fa-lg"></i></span>
+                  <ng-template #close>
+                    <span><i class="fa fa-level-up fa-lg"></i></span>
+                  </ng-template>
+                </button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger" (click)="deleteReten(i)">
+                  <i class="fa fa-times fa-lg"></i>
+                </button>
+              </td>
+            </tr>
+
+            <tr *ngIf="rowSelected==i">
+              <td></td>
+              <td></td>
+              <td colspan="6">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="thRet" style="width:5%;">Tp Ret.</th>
+                      <th class="thRet" style="width:25%;">Nombre</th>
+                      <th class="thRet" style="width:5%;">Base IMP</th>
+                      <th class="thRet" style="width:5%;">% Ret.</th>
+                      <th class="thRet" style="width:1%;">Tipo</th>
+                      <th class="thRet" style="width:8%;">Valor Ret.</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let q of tmp.infoRt ; let j = index">
+                      <td class="tdRet">{{q.codigo}}</td>
+                      <td class="tdRet">{{q.nombre}}</td>
+                      <td class="tdRet">
+                        <input type="number" (focusout)="calculaRt(i,j,txtBaseRt.value)" value="{{q.base}}" #txtBaseRt/>
+                      </td>
+                      <td class="tdRet" style=" text-align: center; ">{{q.porcen | number:'0.2-2' }}</td>
+                      <td class="tdRet">{{q.tipret}}</td>
+                      <td class="tdRet">{{q.valorRet | number:'0.2-2' }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+
+          </ng-container>
+
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="text-right col-sm-12">
+      <button type="button" class="btn btn-success col-sm-1" id="btnGuardarRt" [disabled]="!(tempoR && tempoR.length)"
+              (click)="saveReten()">
+        <i class="fa fa-floppy-o fa-lg"></i>&nbsp;Guardar
+      </button>
+
+      &nbsp; &nbsp;
+
+      <button type="button" class="btn btn-warning col-sm-1" id="btnCancelarRt"
+              (click)="nuevoReten = false; ">
+        <i class="fa fa-undo fa-lg"></i>&nbsp;Regresar
+      </button>
+    </div>
+
+  </div>
+
+  <div class="container m-1 animated fadeIn" id="containerE" *ngIf="nuevoEgreso">
+    <table class="table m-1">
+      <thead>
+        <tr>          
+          <th style="width: 15%">Nombre</th>
+          <th style="width: 15%">Contable</th>
+          <th style="width: 8%">Valor</th>
+          <th style="width: 15%">N° Ch</th>
+          <th style="width: 6%">Fecha</th>
+          <th style="width: 40%">Comentario</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <ng-container *ngFor="let eg of iEgre; let i = index">
+
+          <tr>            
+            <td>{{eg.nombre}}</td>
+            <td>{{eg.codmov}}</td>
+            <td>
+              <input type="number" (focusout)="iEgre[i].valor=txtValEgreso.value" value="{{eg.valor}}" #txtValEgreso />
+            </td>
+            <td>
+              <input type="text" (focusout)="iEgre[i].numeroch=txtnumChEg.value" value="{{eg.numeroch}}" #txtnumChEg />
+            </td>
+            <td>
+              <input type="date" (focusout)="iEgre[i].fecche=txtFechaEg.value" value="{{eg.fecche | date:'yyyy-MM-dd'}}" #txtFechaEg />
+            </td>
+            <td>
+              <input type="text" (focusout)="iEgre[i].comentario=txtComentaEg.value" value="{{eg.comentario}}" #txtComentaEg />
+            </td>
+
+          </tr>
+
+        </ng-container>
+
+      </tbody>
+    </table>
+
+    <div class="text-right col-sm-12">
+      <button type="button" class="btn btn-success col-sm-1" id="btnGuardarEg" [disabled]="!(iEgre && iEgre.length)"
+              (click)="saveEgre()">
+        <i class="fa fa-floppy-o fa-lg"></i>&nbsp;Guardar
+      </button>
+
+      &nbsp; &nbsp;
+
+      <button type="button" class="btn btn-warning col-sm-1" id="btnCancelarEg"
+              (click)="nuevoEgreso = false; ">
+        <i class="fa fa-undo fa-lg"></i>&nbsp;Regresar
+      </button>
+    </div>
+  </div>
+
+  <div class="container m-1 animated fadeIn" id="container3" *ngIf="!nuevoReten && !nuevoEgreso">
+    <div class="form-group row col-sm-12">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="width: 15%">Cuenta</th>
+            <th style="width: 35%">Descripción</th>
+            <th style="width: 5%">Tipo</th>
+            <th style="width: 15%">Referencia</th>
+            <th style="width: 10%">Debe</th>
+            <th style="width: 10%">Haber</th>
+            <th style="width: 5%"></th>
+            <th style="width: 5%"></th>
+          </tr>
+        </thead>
+        <tbody cdkDropList              
+              [cdkDropListData]="_detalleT"
+              [cdkDropListConnectedTo]="[tempoList]"              
+              (cdkDropListDropped)="drop($event)">
+
+          <tr *ngFor="let tmp of _detalleT; let i = index" cdkDrag>
+            <td>{{tmp.codmov}}</td>
+            <td>{{tmp.nombreCta}}</td>
+            <td>{{tmp.tipo}}</td>
+            <td>{{tmp.refer}}</td>
+            <td>{{tmp.debe | number:'0.2-2' }}</td>
+            <td>{{tmp.haber | number:'0.2-2' }}</td>
+            <td>
+              <button type="button" class="btn btn-info"
+                      (click)="indexTempo=i; clickNuevoItem(false);"
+                      [disabled]="showFormItem">
+                <i class="fa fa-pencil-square-o fa-lg"></i>
+              </button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger"
+                      (click)="indexTempo=i; deleteTempo();"
+                      [disabled]="showFormItem">
+                <i class="fa fa-times fa-lg"></i>
+              </button>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <div class="container animated fadeIn" id="container4" *ngIf="!nuevoReten && !nuevoEgreso">
+    <div class="text-right col-sm-12">
+      <label class="lsize70" for="txtSaldo">Saldo:</label>
+      <input class="col-sm-1" type="text" id="txtSaldo" disabled name="txtSaldo" [(ngModel)]="ngSaldo" />
+
+      <label class="lsize70">Totales:</label>
+      <input class="col-sm-1"
+             type="text"
+             id="txtTotalesD" disabled
+             name="debitos"
+             [(ngModel)]="_cabecera.debitos" />
+      <input class="col-sm-1"
+             type="text"
+             id="txtTotalesH" disabled
+             name="creditos"
+             [(ngModel)]="_cabecera.creditos" />
+
+    </div>
+    <br />
+    <div class="text-right col-sm-12">
+
+      <button type="button" class="btn btn-warning col-sm-2" id="btnCancelar"
+              [disabled]="!(_detalleT.length) || showFormItem || canceling"
+              (click)="cancelTrn()">
+        <i [ngClass]="{'fa-refresh':!canceling , 'fa-spinner fa-pulse':canceling }"
+           class="fa fa-lg"></i>
+        &nbsp;
+        <span *ngIf="!canceling">Cancelar</span>
+        <span *ngIf="canceling">Cancelando...</span>
+      </button>
+
+      &nbsp; &nbsp;
+
+      <button type="button" class="btn btn-success col-sm-2" id="btnGuardar"
+              [disabled]="!(_detalleT.length) || showFormItem || saving"
+              (click)="saveTrn()">
+        <i [ngClass]="{'fa-floppy-o':!saving , 'fa-spinner fa-pulse':saving }"
+           class="fa fa-lg"></i>
+        &nbsp;
+        <span *ngIf="!saving">Guardar</span>
+        <span *ngIf="saving">Guardando...</span>
+      </button>
+
+    </div>
+  </div>
+   
+</form>

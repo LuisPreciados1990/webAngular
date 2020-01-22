@@ -1,0 +1,404 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/*The Bootstrap grid system has four classes:
+
+xs (for phones - screens less than 768px wide)
+sm (for tablets - screens equal to or greater than 768px wide)
+md (for small laptops - screens equal to or greater than 992px wide)
+lg (for laptops and desktops - screens equal to or greater than 1200px wide)*/
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+form {
+  position: relative;
+  float: left;  
+  width: 100%;
+}
+.form-group {
+  padding: 0;
+  margin: 0;
+}
+
+label {
+  position: relative;
+  text-align: left;
+  font-weight: bold;
+  font-size: small;
+  padding: 0px;
+  margin: 0px;
+  top: 8px;  
+}
+
+.lsize30 {
+  display: inline-block;
+  width: 30px;
+}
+
+.lsize35 {
+  display: inline-block;
+  width: 35px;
+}
+
+.lsize40 {
+  display: inline-block;
+  width: 40px;
+}
+
+.lsize45 {
+  display: inline-block;
+  width: 45px;
+}
+
+.lsize50 {
+  display: inline-block;
+  width: 50px;
+}
+
+.lsize55 {
+  display: inline-block;
+  width: 55px;
+}
+
+.lsize60 {
+  display: inline-block;
+  width: 60px;
+}
+
+.lsize65 {
+  display: inline-block;
+  width: 65px;
+}
+
+.lsize70 {
+  display: inline-block;
+  width: 70px;
+}
+
+.lsize75 {
+  display: inline-block;
+  width: 75px;
+}
+
+.lsize80 {
+  display: inline-block;
+  width: 80px;
+}
+
+.lsize85 {
+  display: inline-block;
+  width: 85px;
+}
+
+.lsize90 {
+  display: inline-block;
+  width: 90px;
+}
+
+.lsize95 {
+  display: inline-block;
+  width: 95px;
+}
+
+.lsize100 {
+  display: inline-block;
+  width: 100px;
+}
+
+.lsize105 {
+  display: inline-block;
+  width: 105px;
+}
+
+.lsize110 {
+  display: inline-block;
+  width: 110px;
+}
+
+.lsize115 {
+  display: inline-block;
+  width: 115px;
+}
+
+.lsize120 {
+  display: inline-block;
+  width: 120px;
+}
+
+.lsize125 {
+  display: inline-block;
+  width: 125px;
+}
+
+.lsize130 {
+  display: inline-block;
+  width: 130px;
+}
+
+.lsize135 {
+  display: inline-block;
+  width: 135px;
+}
+
+.lsize140 {
+  display: inline-block;
+  width: 140px;
+}
+
+.lsize145 {
+  display: inline-block;
+  width: 145px;
+}
+
+.lsize150 {
+  display: inline-block;
+  width: 150px;
+}
+
+.lsize155 {
+  display: inline-block;
+  width: 155px;
+}
+
+.lsize160 {
+  display: inline-block;
+  width: 160px;
+}
+
+.lsize165 {
+  display: inline-block;
+  width: 165px;
+}
+
+.lsize170 {
+  display: inline-block;
+  width: 170px;
+}
+
+.lsize175 {
+  display: inline-block;
+  width: 175px;
+}
+
+.lsize180 {
+  display: inline-block;
+  width: 180px;
+}
+
+.lsize185 {
+  display: inline-block;
+  width: 185px;
+}
+
+input, select {
+  padding-left: 4px;
+  margin-left: 4px;
+  margin-right: 20px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  height: 30px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+input:disabled {
+  background-color: #BFEFFF;
+}
+
+.fa-search {
+  color: #03BCF9;
+}
+
+.fa-search:hover {
+  cursor: pointer;
+}
+
+.add-on {
+  top: 5px;  
+  position: relative;
+  left: -40px;
+}
+
+.searchInput {
+  padding-right: 25px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+
+mat-tab-group {
+  flex: 1;
+}
+
+.mat-tab-body-wrapper {
+  flex: 1;
+}
+
+/*** Table Styles **/
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+  padding: 0px;
+  margin: 0px;
+}
+
+th {
+  padding: 5px;
+  background-color: #AEFEDC;
+  border-bottom: 2px solid white;
+  text-align: center;
+  font-weight: bold;
+  font-size: medium;
+}
+
+td {
+  padding: 8px;
+  background-color: #EDFEF6;
+  border-bottom: 2px solid white;
+  text-align: left;
+  font-size: medium;
+}
+
+.spinner {
+  margin: 100px auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.cube1, .cube2 {
+  background-color: #333;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: sk-cubemove 1.8s infinite ease-in-out;
+  animation: sk-cubemove 1.8s infinite ease-in-out;
+}
+
+.cube2 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+@-webkit-keyframes sk-cubemove {
+  25% {
+    -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5)
+  }
+
+  50% {
+    -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg)
+  }
+
+  75% {
+    -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5)
+  }
+
+  100% {
+    -webkit-transform: rotate(-360deg)
+  }
+}
+
+@keyframes sk-cubemove {
+  25% {
+    transform: translateX(42px) rotate(-90deg) scale(0.5);
+    -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
+  }
+
+  50% {
+    transform: translateX(42px) translateY(42px) rotate(-179deg);
+    -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
+  }
+
+  50.1% {
+    transform: translateX(42px) translateY(42px) rotate(-180deg);
+    -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+  }
+
+  75% {
+    transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+    -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+    -webkit-transform: rotate(-360deg);
+  }
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.container {
+  max-width: 100%;
+}

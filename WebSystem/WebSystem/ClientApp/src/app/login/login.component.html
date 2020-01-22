@@ -1,0 +1,33 @@
+<body>
+ 
+  <div id="contenedor">
+    
+    <div class="wrapper login-form form-group">
+      <div id="logo">
+        <figure>
+          <img src="../../assets/images/logoSytmo.png" id="imgLogo" />
+        </figure>
+      </div>
+      <form [formGroup]="formGroup" class="login">
+        <p class="title">Log in</p>
+
+        <div class="form-group">
+          <input type="text" placeholder="Username" class="form-control" autofocus formControlName="userId" />
+          <i class="fa fa-user"></i>
+        </div>
+
+        <div class="form-group">
+          <input type="password" placeholder="Password" class="form-control" formControlName="userLog" />
+          <i class="fa fa-key"></i>
+        </div>
+        <a href="#">Forgot your password?</a>
+        <button id="cmdIn" (click)="loguearse()">
+          <span class="state">Log in</span>
+        </button>
+      </form>
+      <div class="alert alert-danger" role="alert" *ngIf="lErrorLogin">
+        {{msjError}}
+      </div>
+    </div>
+  </div>
+</body>

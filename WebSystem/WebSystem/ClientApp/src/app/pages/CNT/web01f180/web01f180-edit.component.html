@@ -1,0 +1,47 @@
+<form class="text-center border border-light p-1" #forma="ngForm">
+
+  <div class="container animated fadeInRight" id="container2">
+    <div class="form-group row col-sm-12">
+      <label for="txtCco" class="lsize110">Centro de Costo:</label>
+      <input class="form-control col-sm-1"
+             type="text"
+             id="txtCco"
+             autocomplete="off"
+             maxlength="10"
+             [(ngModel)]="_ccos.cod_centro"
+             name="cod_centro"
+             required
+             [disabled]="!isNew" />
+
+      <input class="form-control col-sm-4"
+             type="text"
+             id="txtnCco"
+             autocomplete="off"
+             maxlength="100"
+             [(ngModel)]="_ccos.nombre"
+             name="nombre"
+             required />
+
+      <label for="txtSoci" class="lsize80">Sociedad:</label>
+      <input class="form-control col-sm-4"
+             type="text"
+             id="txtSoci"
+             autocomplete="off"
+             maxlength="100"
+             [(ngModel)]="_ccos.sociedad"
+             name="sociedad" />
+
+    </div>
+
+    <div class="btn-group m-5">
+      <button type="button" class="btn btn-success" id="btnSave" (click)="saveCco(forma)">
+        <i class="fa fa-floppy-o fa-lg"></i>
+      </button>
+
+      <button type="button" class="btn btn-secondary" id="btnBack" (click)="regresar()">
+        <i class="fa fa-undo fa-lg"></i>
+      </button>
+    </div>
+
+  </div>
+</form>

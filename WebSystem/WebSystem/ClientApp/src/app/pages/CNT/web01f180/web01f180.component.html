@@ -1,0 +1,58 @@
+<form class="text-center border border-light p-1" #forma="ngForm">
+  <div class="container animated fadeInRight" id="container1">
+
+    <div class="row">
+      <div class="col-2">
+        <button type="button" class="btn btn-info" id="btnNew" (click)="openForm('')">
+          <i class="fa fa-plus fa-3x"></i>
+        </button>
+      </div>
+      <div class="col-5">
+        <mat-form-field>
+          <input matInput placeholder="Busqueda" (keyup)="buscarCCo(txtNombre.value)"
+                 id="txtNombre" #txtNombre autocomplete="off">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <table mat-table class="table mat-elevation-z8">
+      <thead>
+        <tr>
+          <th style="width: 10%">Código</th>
+          <th style="width: 40%">Nombre</th>
+          <th style="width: 10%">Sociedad</th>
+          <th style="width: 5%"></th>
+          <th style="width: 5%"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let cco of iccos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+          <td mat-cell> {{cco.cod_centro}} </td>
+          <td mat-cell> {{cco.nombre}} </td>
+          <td mat-cell> {{cco.sociedad}} </td>
+          <td mat-cell>
+            <button type="button" class="btn btn-info" (click)="openForm(cco.cod_centro)">
+              <i class="fa fa-pencil-square-o fa-lg"></i>
+            </button>
+          </td>
+          <td mat-cell>
+            <button type="button" class="btn btn-danger" (click)="deleteCCo(cco)">
+              <i class="fa fa-times fa-lg"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+    <div>
+      <ngb-pagination [(page)]="page"
+                      [pageSize]="pageSize"
+                      [collectionSize]="iccos.length"
+                      [maxSize]="12"
+                      [rotate]="true"
+                      [ellipses]="false"
+                      [boundaryLinks]="true"></ngb-pagination>
+    </div>
+  </div>
+</form>

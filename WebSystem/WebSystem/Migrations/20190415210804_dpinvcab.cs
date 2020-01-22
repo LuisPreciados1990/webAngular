@@ -1,0 +1,251 @@
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+namespace WebSystem.Migrations
+{
+    public partial class dpinvcab : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "DPINVCAB",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Tipo = table.Column<string>(type: "char(2)", nullable: false),
+                    Numero = table.Column<string>(type: "char(8)", nullable: false),
+                    Numero_b = table.Column<string>(type: "nvarchar(15)", nullable: true, defaultValue: ""),
+                    Referencia = table.Column<string>(type: "nvarchar(15)", nullable: true),
+                    Grupo = table.Column<string>(type: "char(1)", nullable: true),
+                    Tipo_t = table.Column<string>(type: "char(1)", nullable: true),
+                    Fecha_tra = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Fecha_ven = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Bodega_d = table.Column<string>(type: "char(3)", nullable: true),
+                    Bodega = table.Column<string>(type: "char(3)", nullable: true),
+                    Prov_cli = table.Column<string>(type: "char(6)", nullable: true),
+                    Vendedor = table.Column<string>(type: "char(3)", nullable: true),
+                    Tp_precio = table.Column<string>(type: "char(1)", nullable: true),
+                    Total_mov = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Pordes = table.Column<decimal>(type: "decimal(6, 2)", nullable: false, defaultValue: 0m),
+                    Total_des = table.Column<decimal>(type: "decimal(16, 2)", nullable: false, defaultValue: 0m),
+                    Poriva = table.Column<decimal>(type: "decimal(6, 2)", nullable: false, defaultValue: 0m),
+                    Total_iva = table.Column<decimal>(type: "decimal(16, 2)", nullable: false, defaultValue: 0m),
+                    Total_trn = table.Column<decimal>(type: "decimal(16, 2)", nullable: false, defaultValue: 0m),
+                    Userfec = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Userfec_2 = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    Usertim = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    Usercla = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    Comenta = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Comenta1 = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Comenta2 = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Comenta3 = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Vta_cli = table.Column<string>(type: "nvarchar(40)", nullable: true),
+                    Vta_ruc = table.Column<string>(type: "nvarchar(13)", nullable: true),
+                    Vta_dir = table.Column<string>(type: "nvarchar(40)", nullable: true),
+                    Vta_fo1 = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    Vta_fo2 = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    Anulada = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    Fecha_anu2 = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Fecha_anu = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Hora_anu = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    User_anu = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    Abono = table.Column<decimal>(type: "decimal(16, 2)", nullable: false, defaultValue: 0m),
+                    Fac_pro = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    Codigo_i = table.Column<string>(type: "char(2)", nullable: true),
+                    Codigo_e = table.Column<string>(type: "char(2)", nullable: true),
+                    Integracnt = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    Vapor = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    Fec_emb = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Semana = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    Guia_remi = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    Numfue = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    Librasne = table.Column<decimal>(type: "decimal(16, 4)", nullable: false),
+                    Pesone = table.Column<decimal>(type: "decimal(16, 4)", nullable: false),
+                    Pesobru = table.Column<decimal>(type: "decimal(16, 4)", nullable: false),
+                    Marca = table.Column<string>(type: "nvarchar(30)", nullable: true),
+                    Destino = table.Column<string>(type: "nvarchar(30)", nullable: true),
+                    Cartonera = table.Column<string>(type: "nvarchar(30)", nullable: true),
+                    Cancelapto = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    Comprodev = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    Van = table.Column<int>(type: "int", nullable: false),
+                    Cajero = table.Column<string>(type: "char(3)", nullable: true),
+                    Flete = table.Column<decimal>(type: "decimal(16,2)", nullable: false),
+                    Transporte = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    Terminos = table.Column<string>(type: "nvarchar(30)", nullable: true),
+                    St = table.Column<string>(type: "char(2)", nullable: true),
+                    Canc_lote = table.Column<bool>(type: "bit", nullable: false),
+                    Factura = table.Column<string>(type: "char(8)", nullable: true),
+                    Dirdes = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    Remite = table.Column<string>(type: "nvarchar(70)", nullable: true),
+                    Fec_ini = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Fec_fin = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Trasladox = table.Column<string>(type: "char(1)", nullable: true),
+                    Base_0 = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Base_tax = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Val_trans = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Porcom = table.Column<decimal>(type: "decimal(6, 2)", nullable: false),
+                    Integracos = table.Column<string>(type: "char(10)", nullable: true),
+                    Ordcom = table.Column<string>(type: "char(8)", nullable: true),
+                    Cubica_t = table.Column<decimal>(type: "decimal(16, 4)", nullable: false),
+                    Ano = table.Column<int>(type: "int", nullable: false),
+                    Periodo = table.Column<int>(type: "int", nullable: false),
+                    Catego = table.Column<int>(type: "int", nullable: false),
+                    Programa = table.Column<int>(type: "int", nullable: false),
+                    Cuota = table.Column<int>(type: "int", nullable: false),
+                    Contrib = table.Column<string>(type: "char(1)", nullable: true),
+                    Rma = table.Column<string>(type: "char(1)", nullable: true),
+                    Ocompra = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    S_impcadu = table.Column<string>(type: "char(8)", nullable: true),
+                    S_autoriza = table.Column<string>(type: "nvarchar(49)", nullable: true),
+                    Od = table.Column<bool>(type: "bit", nullable: false),
+                    Fecha_ve1 = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Status_flu = table.Column<string>(type: "char(1)", nullable: true),
+                    Fecha_flu = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Ctacont = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    Total_ser = table.Column<decimal>(type: "decimal(12, 2)", nullable: false),
+                    Por_comitc = table.Column<decimal>(type: "decimal(8, 2)", nullable: false),
+                    Base_tc = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Valcomitc = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Contabi = table.Column<bool>(type: "bit", nullable: false),
+                    Impreso = table.Column<string>(type: "char(1)", nullable: true),
+                    Desc_fac = table.Column<string>(type: "nvarchar(80)", nullable: true),
+                    Valor_rt = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
+                    Pesada = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    Lote = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    Contenedor = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    Sellos = table.Column<string>(type: "nvarchar(25)", nullable: true),
+                    Export = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    SubpartiAn = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    Marcas = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    Guia_placa = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    Guia_nDestina = table.Column<string>(type: "nvarchar(200)", nullable: true),
+                    Guia_RucDest = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    Aguaje = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    Lrecibida = table.Column<decimal>(type: "numeric(18, 2)", nullable: false),
+                    Lbasura = table.Column<decimal>(type: "numeric(18, 2)", nullable: false),
+                    Rendimiento = table.Column<decimal>(type: "numeric(18, 2)", nullable: false),
+                    Total_lib = table.Column<decimal>(type: "numeric(18, 2)", nullable: false),
+                    Total_kil = table.Column<decimal>(type: "numeric(18, 2)", nullable: false),
+                    Total_caj = table.Column<decimal>(type: "numeric(18, 2)", nullable: false),
+                    Sobrante = table.Column<decimal>(type: "numeric(18, 2)", nullable: false),
+                    Sobr_basura = table.Column<decimal>(type: "numeric(18, 2)", nullable: false),
+                    Sobr_remite = table.Column<decimal>(type: "numeric(18, 2)", nullable: false),
+                    Sobr_rendi = table.Column<decimal>(type: "numeric(18, 2)", nullable: false),
+                    Peso_planta = table.Column<decimal>(type: "numeric(18, 2)", nullable: false),
+                    Trans_ruc = table.Column<string>(type: "nvarchar(13)", nullable: true),
+                    Partida = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Transporta = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Llegada = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Ruta = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Ce_autoriz = table.Column<string>(type: "nvarchar(49)", nullable: true),
+                    Ce_clave = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    Ce_fecaut = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Ce_activo = table.Column<string>(type: "char(1)", nullable: true),
+                    Ce_estado = table.Column<string>(type: "char(1)", nullable: true),
+                    Ce_deserra = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Fecha_clu = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Ap_comi = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Recibido = table.Column<string>(type: "char(1)", nullable: true),
+                    Fecha_rec = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Hora_rec = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    User_rec = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    Comenta_re = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Conceptox = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Rs_scan = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    EstadoFac = table.Column<bool>(type: "bit", nullable: false),
+                    Flete_loc = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Gasto_loc = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Valor_fob = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Flete_int = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Seguro = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Valor_cif = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Valor_adu = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Gastos_lod = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Valtransp = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Valotros = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Total_sub = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Tipo_trans = table.Column<string>(type: "char(3)", nullable: true),
+                    Pais = table.Column<string>(type: "char(3)", nullable: true),
+                    Doc_embar = table.Column<string>(type: "nvarchar(15)", nullable: true),
+                    Pto_embar = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Tam_conte = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    Num_conte = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    Tipo_segur = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Embarque = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Liquida = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    Import = table.Column<string>(type: "nvarchar(10)", nullable: true),
+                    Come_anula = table.Column<string>(type: "nvarchar(250)", nullable: true),
+                    Total_ice = table.Column<decimal>(type: "decimal(16, 2)", nullable: false),
+                    Csf_nombre = table.Column<string>(type: "nvarchar(70)", nullable: true),
+                    Csf_cedula = table.Column<string>(type: "nvarchar(13)", nullable: true),
+                    Csf_direcc = table.Column<string>(type: "nvarchar(70)", nullable: true),
+                    Cpcodigo_1 = table.Column<string>(type: "char(2)", nullable: true),
+                    CpValor_1 = table.Column<decimal>(type: "numeric(16, 2)", nullable: false),
+                    Cpcodpla_1 = table.Column<string>(type: "char(3)", nullable: true),
+                    Cpvalpla_1 = table.Column<decimal>(type: "numeric (6, 0)", nullable: false),
+                    Cpcodigo_2 = table.Column<string>(type: "char(2)", nullable: true),
+                    CpValor_2 = table.Column<decimal>(type: "numeric(16, 2)", nullable: false),
+                    Cpcodpla_2 = table.Column<string>(type: "char(3)", nullable: true),
+                    Cpvalpla_2 = table.Column<decimal>(type: "numeric (6, 0)", nullable: false),
+                    Cpcodigo_3 = table.Column<string>(type: "char(2)", nullable: true),
+                    CpValor_3 = table.Column<decimal>(type: "numeric(16, 2)", nullable: false),
+                    Cpcodpla_3 = table.Column<string>(type: "char(3)", nullable: true),
+                    Cpvalpla_3 = table.Column<decimal>(type: "numeric (6, 0)", nullable: false),
+                    Cpcodigo_4 = table.Column<string>(type: "char(2)", nullable: true),
+                    CpValor_4 = table.Column<decimal>(type: "numeric(16, 2)", nullable: false),
+                    Cpcodpla_4 = table.Column<string>(type: "char(3)", nullable: true),
+                    Cpvalpla_4 = table.Column<decimal>(type: "numeric (6, 0)", nullable: false),
+                    Porpromc = table.Column<decimal>(type: "numeric (16, 8)", nullable: false),
+                    EsCotiza = table.Column<int>(type: "int", nullable: false),
+                    CSaldo = table.Column<string>(type: "char(1)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DPINVCAB", x => x.Id);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DPINVCAB_Fac_pro",
+                table: "DPINVCAB",
+                column: "Fac_pro");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DPINVCAB_Fecha_tra",
+                table: "DPINVCAB",
+                column: "Fecha_tra");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DPINVCAB_Grupo",
+                table: "DPINVCAB",
+                column: "Grupo");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DPINVCAB_Integracnt",
+                table: "DPINVCAB",
+                column: "Integracnt");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DPINVCAB_Numero",
+                table: "DPINVCAB",
+                column: "Numero");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DPINVCAB_Prov_cli",
+                table: "DPINVCAB",
+                column: "Prov_cli");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DPINVCAB_Tipo",
+                table: "DPINVCAB",
+                column: "Tipo");
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "DPINVCAB");
+        }
+    }
+}

@@ -1,0 +1,21 @@
+footer {
+  color: white;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 25px;
+  background-color: #2e353d;
+  border-style: none;
+}
+p{
+  position:relative;
+  margin:0;
+  padding:0;
+}
+
+#aFecha {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 0%;
+}

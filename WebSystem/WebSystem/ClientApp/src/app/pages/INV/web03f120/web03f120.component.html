@@ -1,0 +1,95 @@
+<form class="text-center border border-light p-1" #forma="ngForm">
+  <div class="container animated fadeInRight" id="container1">
+      <div class="row">
+
+        <div class="col-2">
+          <button type="button" class="btn btn-info" id="btnNew" (click)="openForm('')">
+            <i class="fa fa-plus fa-3x"></i>
+          </button>
+        </div>
+
+        <div class="col-2">
+          <mat-form-field>
+            <input matInput placeholder="Busqueda de Producto" (keyup)="buscarProducto(txtNombre.value)"
+                   id="txtNombre" #txtNombre autocomplete="off">
+          </mat-form-field>
+        </div>
+
+        <div class="col-2">
+          <h6>Tabla</h6>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="verTb" name="chTable" (click)="cargaProd()">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+      </div>
+
+      <div class="row" *ngIf="!verTb">
+        <div *ngFor="let prod of iProd" class="col-2 card">
+          <img class="card-img-top" src="../../../../assets/images/noImage.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h6 class="card-title">{{prod.no_parte}}</h6>
+            <p class="card-text">{{prod.nombre}}</p>
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-success" id="btnEdit" (click)="editItem=prod.no_parte; isNew = false; openForm(true)">
+                <i class="fa fa-pencil-square-o fa-lg"></i>
+              </button>
+
+              <button type="button" class="btn btn-danger" id="btnDelete">
+                <i class="fa fa-times fa-lg"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="verTb">
+
+        <table mat-table class="mat-elevation-z8">
+          <thead>
+            <tr>
+              <th style="width: 10%"> CODIGO </th>
+              <th style="width: 50%"> NOMBRE </th>
+              <th style="width: 5%"> MEDIDA </th>
+              <th style="width: 5%"r> TIPO </th>
+              <th style="width: 5%"></th>
+              <th style="width: 5%"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let prod of iProd | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+              <td mat-cell> {{prod.no_parte}} </td>
+              <td mat-cell> {{prod.nombre}} </td>
+              <td mat-cell> {{prod.desunidad}} </td>
+              <td mat-cell> {{prod.tipo}} </td>
+              <td mat-cell>
+                <button type="button" class="btn btn-info" (click)="openForm(prod.no_parte)">
+                  <i class="fa fa-pencil-square-o fa-lg"></i>
+                </button>
+              </td>
+              <td mat-cell>
+                <button type="button" class="btn btn-danger" (click)="deleteProd(cco)">
+                  <i class="fa fa-times fa-lg"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+        <div>
+          <ngb-pagination [(page)]="page"
+                          [pageSize]="pageSize"
+                          [collectionSize]="iProd.length"
+                          [maxSize]="12"
+                          [rotate]="true"
+                          [ellipses]="false"
+                          [boundaryLinks]="true"></ngb-pagination>
+        </div>
+
+      </div>    
+  </div>
+</form>

@@ -1,0 +1,45 @@
+@import '../../../../styles.css';
+
+button {
+  border: 20px;
+}
+
+tr:hover td {
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+td {
+  padding: 2px;
+}
+
+.btn-danger, .btn-info {
+  width: 70px;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.mat-form-field {
+  width: 800px;
+}
+
+#btnNew {
+  width: 70px;
+  height: 70px;
+  border-radius: 70px;
+  border: 0px;
+  padding: 0px;
+}
+
+.btn-group {
+  position: relative;
+  width: 38%;
+  left: -3%;
+  float: right;
+}
+
+.btn {
+  width: 50%;
+  border: 0px;
+  padding: 0px;
+}

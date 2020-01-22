@@ -1,0 +1,8 @@
+button {
+  border: 20px;
+}
+
+tr:hover td {
+  background-color: #ccc;
+  cursor: pointer;
+}

@@ -1,0 +1,185 @@
+<form class="text-center border border-light p-1">
+  <div class="container" id="container1">
+
+    <div class="form-group row col-sm-12">
+      <label for="cboTipo" class="lsize70">Tipo</label>
+      <select class="form-control col-sm-2" id="cboTipo" [(ngModel)]="selectedTrn" name="cboTipo" #cboTipo>
+        <option *ngFor="let comp of iComp" [value]="comp.codigo">{{comp.nombre}}</option>
+      </select>
+
+      <label for="txtNumero" class="lsize80">Numero</label>
+      <input class="form-control col-sm-1" type="text" placeholder="00000000" id="txtNumero" />
+
+      <label for="txtFecha" class="lsize65">Fecha</label>
+      <input class="form-control col-sm-2" type="date" id="txtFecha" [(ngModel)]="pDate" name="txtFecha" />
+
+      <label for="txtBodega" class="lsize75">Bodega</label>
+      <select class="form-control col-sm-2" id="cboBodega" [(ngModel)]="selectedBod" name="cboBodega" #cboBodega>
+        <option *ngFor="let bod of iBode" value={{bod.codigo}}>{{bod.nombre}}</option>
+      </select>
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <label for="txtcli" class="lsize70">Cliente</label>
+      <input class="form-control searchInput col-sm-1" type="text" id="txtcli"
+             #txtcli name="txtcli" [(ngModel)]="selectedCli"
+             (focusout)="cargaCli()" (keyup.enter)="cargaCli()" autocomplete="off" />
+      <span class="add-on" (click)="buscarCliente()"><i class="fa fa-search"></i></span>
+
+      <label for="txtncli" class="lsize60">Nombre</label>
+      <input class="form-control searchInput col-sm-3" type="text" id="txtncli" disabled [value]="ncliente" />
+
+      <label for="txtrcli" class="lsize30">Ruc</label>
+      <input class="form-control col-sm-2" type="text" id="txtrcli" disabled [value]="rcliente" />
+
+      <label for="txttcli" class="lsize30">Telf.</label>
+      <input class="form-control col-sm-2" type="text" id="txttcli" disabled [value]="tcliente" />
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <label for="txtecli" class="lsize70">Email</label>
+      <input class="form-control col-sm-3" type="text" id="txtecli" disabled [value]="ecliente" />
+
+      <label for="txtdcli" class="lsize90">Dirección</label>
+      <input class="form-control col-sm-6" type="text" id="txtdcli" disabled [value]="dcliente" />
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <label for="txtcomenta" class="lsize70">Comentario</label>
+      <input class="form-control col-sm-5" type="text" id="txtcomenta" name="txtcomenta" [(ngModel)]="txtcomenta" #rComenta />
+
+      <label for="cboVende" class="lsize85">Vendedor</label>
+      <select class="form-control col-sm-2" id="cboVende" [(ngModel)]="selectedVende" name="cboVende" #cboVende>
+        <option *ngFor="let ven of iVende" [value]="ven.codigo">{{ven.nombre}}</option>
+      </select>
+
+      <label for="txtusuario" class="lsize70">Usuario</label>
+      <input class="form-control col-sm-1" type="text" id="txtusuario" disabled [value]="env.eUsuario" />
+    </div>
+  </div>
+
+  <div class="container" id="container2">
+    <div class="form-group row col-sm-12">
+      <button type="button" class="btn btn-primary" id="btnPlus" (click)="clickNuevoItem(true)" [disabled]="nuevoItem">
+        <i class="fa fa-plus-circle fa-lg"></i>
+      </button>
+      <button type="button" class="btn btn-success" id="btnSave" (click)="saveTempo()" [disabled]="!nuevoItem">
+        <i class="fa fa-floppy-o fa-lg"></i>
+      </button>
+      <button type="button" class="btn btn-warning" id="btnCancel" (click)="clickNuevoItem(false)" [disabled]="!nuevoItem">
+        <i class="fa fa-undo fa-lg"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="container" id="containerP" *ngIf="nuevoItem">
+    <div class="form-group row col-sm-12">
+      <label for="txtprod" class="lsize70">Producto</label>
+      <input class="form-control searchInput col-sm-2" type="text" id="txtprod" #txtprod
+             name="txtprod" [(ngModel)]="selectedProd" (focusout)="cargaProd()"
+             (keyup.enter)="cargaProd()" autocomplete="off" />
+      <span class="add-on" (click)="buscarProducto()"><i class="fa fa-search"></i></span>
+
+      <input class="form-control col-sm-5" type="text" id="txtnprod" disabled [value]="nProducto" />
+
+      <label for="txtPesenta">Medida</label>
+      <input class="form-control col-sm-2" type="text" id="txtPesenta" disabled [value]="nPresenta" />
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <label for="cbodBodega" class="lsize70">Bod.</label>
+      <select class="form-control col-sm-2" id="cbodBodega" [(ngModel)]="selecteddBod" name="cbodBodega">
+        <option *ngFor="let bod of iBode" value={{bod.codigo}}>{{bod.nombre}}</option>
+      </select>
+
+      <label for="txtcanti" class="lsize75">Cantidad</label>
+      <input class="form-control col-sm-1" type="number" id="txtcanti" [value]="pCantidad"
+             (focusout)="fCalcula()" name="txtcanti" [(ngModel)]="pCantidad" />
+
+      <label for="txtprecio_u" class="lsize70">Precio U.</label>
+      <input class="form-control col-sm-1" type="number" id="txtprecio_u" [value]="pPreciou"
+             (focusout)="fCalcula()" name="txtprecio_u" [(ngModel)]="pPreciou" />
+
+      <label for="txtddescu" class="lsize75">Descuento</label>
+      <input class="form-control col-sm-1" type="number" id="txtddescu" [value]="pDecuento"
+             (focusout)="fCalcula()" name="txtddescu" [(ngModel)]="pDecuento" />
+
+      <label for="txtprecio_t" class="lsize70">Precio T.</label>
+      <input class="form-control col-sm-1" type="number" id="txtprecio_t" disabled [value]="pPreciot"
+             (focusout)="fCalcula()" name="txtprecio_t" [(ngModel)]="pPreciot" />
+    </div>
+  </div>
+
+    <div class="container" id="container3">
+      <div class="form-group row col-sm-12">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width: 15%">Codigo</th>
+              <th style="width: 40%">Producto</th>
+              <th style="width: 8%">Cantidad</th>
+              <th style="width: 10%">Precio</th>
+              <th style="width: 8%">Desc.</th>
+              <th style="width: 10%">Total</th>
+              <th style="width: 5%"></th>
+              <th style="width: 5%"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tmp of tempo; let i = index">
+              <td>{{tmp.no_parte}}</td>
+              <td>{{tmp.nombre}}</td>
+              <td>{{tmp.cantidad}}</td>
+              <td>{{tmp.precio_u}}</td>
+              <td>{{tmp.descuento}}</td>
+              <td>{{tmp.precio_t}}</td>
+              <td>
+                <button type="button" class="btn btn-info">
+                  <i class="fa fa-pencil-square-o fa-lg"></i>
+                </button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger" (click)="deleteTempo(i)">
+                  <i class="fa fa-times fa-lg"></i>
+                </button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <div class="container" id="container4">
+      <div class="text-right col-sm-12">
+        <label class="col-sm-1" for="txtSubtotal">Subtotal</label>
+        <input class="col-sm-2" type="text" id="txtSubtotal" disabled [value]="pSubtotal" />
+      </div>
+      <div class="text-right col-sm-12">
+        <label class="col-sm-1" for="txtDescuento">Descuento</label>
+        <input class="col-sm-2" type="text" id="txtDescuento" disabled [value]="pDescuTrn" />
+      </div>
+      <div class="text-right col-sm-12">
+        <label class="col-sm-1" for="txtIva0">Iva 0</label>
+        <input class="col-sm-2" type="text" id="txtIva0" disabled [value]="pIva0" />
+      </div>
+      <div class="text-right col-sm-12">
+        <label class="col-sm-1" for="txtIva12">Iva {{env.eIva}}</label>
+        <input class="col-sm-2" type="text" id="txtIva12" disabled [value]="pIvaTax" />
+      </div>
+      <div class="text-right col-sm-12">
+        <label class="col-sm-1" for="txtTotal">Total</label>
+        <input class="col-sm-2" type="text" id="txtTotal" disabled [value]="pTotalTrn" />
+      </div>
+      <div class="text-right col-sm-12">
+      </div>      
+      <div class="text-right col-sm-12">
+        <button type="button" class="btn btn-success col-sm-3" id="btnGuardar" [disabled]="!(tempo && tempo.length)"
+                (click)="saveTrn()">
+          Guardar<i class="fa fa-floppy-o fa-lg"></i>
+        </button>
+      </div>
+    </div>
+</form>

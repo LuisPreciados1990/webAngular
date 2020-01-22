@@ -1,0 +1,140 @@
+@import '../../../../styles.css';
+
+#container1 {
+  position: relative;
+  width: 100%;
+  padding: 5px,0,0,0;
+  margin: 5px,0,0,0;  
+  background-color: #F0F9FC;
+  border-radius: 20px;
+}
+
+#containerP, #containerR {
+  padding: 5px,0,0,0;
+  margin: 5px,0,0,0;
+  background-color: #E7FCE0;
+  border-radius: 20px;
+}
+
+#btnPlus, #btnCancel, #btnSave {
+  width: 80px;
+  border-radius: 50px;
+  padding: 4px;
+  margin: 4px;
+}
+
+#btnReten, #btnEgreso {
+  position: relative;
+  left: 80px;
+  top: 4px;
+  width: 120px;
+  height: 25px;
+  border-radius: 50px;
+  padding: 4px;
+  margin: 4px;
+  font-weight: bold;
+  font-size: small;
+  padding:0;
+}
+
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.btn-danger, .btn-info {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+}
+
+#btnGuardar, #btnCancelar {
+  font-weight: bold;
+  border-radius: 50px;
+  color: white;
+}
+
+#btnGuardarRt, #btnCancelarRt, #btnGuardarEg, #btnCancelarEg {
+  padding: 0;
+  margin: 2px;
+  width: 100px;
+  height: 25px;
+  font-weight: bold;
+  font-size: small;
+  color: white;
+  border-radius: 50px;
+}
+
+#btnAddRt {
+  padding: 0;
+  margin: 2px;  
+  font-weight: bold;
+  font-size: small;
+  color: white;
+  border-radius: 50px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+  padding: 0px;
+  margin: 0px;
+}
+
+th {
+  padding: 3px;
+  background-color: #AEFEDC;
+  border-bottom: 2px solid white;
+  text-align: left;
+  font-weight: bold;
+  font-size: medium;
+}
+
+td {
+  padding: 1px;
+  background-color: #EDFEF6;
+  border-bottom: 2px solid white;
+  text-align: left;
+  font-size: medium;
+}
+
+.thRet {
+  padding: 3px;
+  background-color: #F6FA44;
+  border-bottom: 2px solid white;
+  text-align: left;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.tdRet {
+  padding: 1px;
+  background-color: #FCFEB0;
+  border-bottom: 2px solid white;
+  text-align: left;
+  font-size: medium;
+}
+
+td input {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+i {
+  color: white;
+}
+
+.fa-close:before, .fa-times:before,
+.fa-pencil-square-o:before,
+.fa-level-up:before, .fa-level-down:before {
+  margin: -8px;
+  margin-top: -19px;
+  position: absolute;
+}

@@ -1,0 +1,148 @@
+<form class="text-center border border-light p-1" #forma="ngForm">
+    <div class="container animated fadeInRight" id="container2">
+
+    <div class="form-group row col-sm-12">
+      <label for="txtCodigo" class="lsize80">Codigo:</label>
+      <input class="form-control col-sm-1"
+             type="text"
+             id="txtCodigo"
+             autocomplete="off"
+             maxlength="2"
+             [(ngModel)]="_dpnum.tipo_asi"
+             name="tipo_asi"
+             required
+             [disabled]="!isNew"
+             oninput="this.value = this.value.toUpperCase()" />
+
+      <input class="form-control col-sm-5"
+             type="text"
+             id="txtNombre"
+             autocomplete="off"
+             maxlength="150"
+             [(ngModel)]="_dpnum.nombre"
+             name="nombre"
+             required />
+
+      <label for="txtNumero" class="lsize90">Numeracion:</label>
+      <input class="form-control col-sm-1"
+             type="text"
+             id="txtNumero"
+             autocomplete="off"
+             maxlength="8"
+             [(ngModel)]="_dpnum.asiento"
+             name="asiento"
+             required />
+
+      <label for="txtForma" class="lsize80">Reporte:</label>
+      <input class="form-control col-sm-1"
+             type="text"
+             id="txtForma"
+             autocomplete="off"
+             maxlength="8"
+             [(ngModel)]="_dpnum.nomforma"
+             name="nomforma"
+             oninput="this.value = this.value.toUpperCase()" />
+    </div>
+
+    <div class="form-group row col-sm-12">
+
+      <label for="cboModulo" class="lsize80">Modulo:</label>
+      <select class="form-control col-sm-2"
+              id="cboModulo"
+              [(ngModel)]="_dpnum.modulo"
+              name="modulo">
+        <option value=""></option>
+        <option value="C">CONTABILIDAD</option>
+        <option value="B">BANCO</option>
+      </select>
+
+      <label for="cboTpc" class="lsize100">Tipo Comproba:</label>
+      <select class="form-control col-sm-1"
+              id="cboTpc"
+              [(ngModel)]="_dpnum.tipo_com"
+              name="tipo_com">
+        <option value="D">DIARIO</option>
+        <option value="I">INGRESO</option>
+        <option value="E">EGRESO</option>
+      </select>
+
+      <mat-checkbox class="marginck col-sm-1"
+                    [(ngModel)]="_dpnum.fiscal"
+                    name="fiscal">Fiscal</mat-checkbox>
+      &nbsp;
+      <label for="cboAnex" class="lsize150">Anexos Transaccionales:</label>
+      <select class="form-control col-sm-1"
+              id="cboAnex"
+              [(ngModel)]="_dpnum.tiene_at"
+              name="tiene_at">
+        <option value="">NO</option>
+        <option value="C">COMPRA</option>
+        <option value="V">VENTA</option>
+      </select>
+
+      <label for="cboNumsecu" class="lsize135">Numeración Mensual:</label>
+      <select class="form-control col-sm-1"
+              id="cboNumsecu"
+              [(ngModel)]="_dpnum.secumes"
+              name="secumes">
+        <option value="N">NO</option>
+        <option value="S">SI</option>
+      </select>
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <br />
+      <strong><u>INFORMACION DE RETENCION</u></strong>
+    </div>
+
+    <div class="form-group row col-sm-12">
+
+      <label for="cboReten" class="lsize80">Retención:</label>
+      <select class="form-control col-sm-1"
+              id="cboReten"
+              [(ngModel)]="_dpnum.es_retenci"
+              name="es_retenci">
+        <option value="N">NO</option>
+        <option value="S">SI</option>
+      </select>
+
+      <label for="cboElec" class="lsize180">Es Comprobante Electronico:</label>
+      <select class="form-control col-sm-1"
+              id="cboElec"
+              [(ngModel)]="_dpnum.celectro"
+              name="celectro">
+        <option value="N">NO</option>
+        <option value="S">SI</option>
+      </select>
+
+      <label for="txtSerie" class="lsize90">PtoEst PtoEmi:</label>
+      <input class="form-control col-sm-1"
+             type="text"
+             id="txtSerie"
+             autocomplete="off"
+             maxlength="6"
+             [(ngModel)]="_dpnum.serie_rt"
+             name="serie_rt" />
+
+      <label for="txtAutori" class="lsize90">Autorización:</label>
+      <input class="form-control col-sm-3"
+             type="text"
+             id="txtAutori"
+             autocomplete="off"
+             maxlength="49"
+             [(ngModel)]="_dpnum.autori_rt"
+             name="autori_rt" />
+
+    </div>
+
+    <div class="btn-group m-5">
+      <button type="button" class="btn btn-success" id="btnSave" (click)="save(forma)">
+        <i class="fa fa-floppy-o fa-lg"></i>
+      </button>
+
+      <button type="button" class="btn btn-secondary" id="btnBack" (click)="regresar()">
+        <i class="fa fa-undo fa-lg"></i>
+      </button>
+    </div>
+  </div>
+</form>

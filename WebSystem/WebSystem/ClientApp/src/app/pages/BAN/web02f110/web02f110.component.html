@@ -1,0 +1,62 @@
+<form class="text-center border border-light p-1" #forma="ngForm">
+  <div class="container animated fadeInRight" id="container1">
+
+    <div class="row">
+      <div class="col-2">
+        <button type="button" class="btn btn-info" id="btnNew" (click)="openForm('')">
+          <i class="fa fa-plus fa-3x"></i>
+        </button>
+      </div>
+      <div class="col-5">
+        <mat-form-field>
+          <input matInput placeholder="Busqueda" (keyup)="buscar(txtNombre.value)"
+                 id="txtNombre" #txtNombre autocomplete="off">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <table mat-table class="table mat-elevation-z8">
+      <thead>
+        <tr>
+          <th style="width: 5%">Código</th>
+          <th style="width: 25%">Nombre</th>
+          <th style="width: 15%"># Cuenta</th>
+          <th style="width: 15%">Contable</th>
+          <th style="width: 10%"># Cheque</th>
+          <th style="width: 5%"></th>
+          <th style="width: 5%"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let bco of ibancos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+          <td mat-cell> {{bco.codigobco}} </td>
+          <td mat-cell> {{bco.nombrebco}} </td>
+          <td mat-cell> {{bco.cuentano}} </td>
+          <td mat-cell> {{bco.codmov}} </td>
+          <td mat-cell> {{bco.numeroch}} </td>
+          <td mat-cell>
+            <button type="button" class="btn btn-info" (click)="openForm(bco.codigobco)">
+              <i class="fa fa-pencil-square-o fa-lg"></i>
+            </button>
+          </td>
+          <td mat-cell>
+            <button type="button" class="btn btn-danger" (click)="deleteBco(bco)">
+              <i class="fa fa-times fa-lg"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+    <div>
+      <ngb-pagination [(page)]="page"
+                      [pageSize]="pageSize"
+                      [collectionSize]="ibancos.length"
+                      [maxSize]="10"
+                      [rotate]="true"
+                      [ellipses]="false"
+                      [boundaryLinks]="true"></ngb-pagination>
+    </div>
+  </div>    
+</form>

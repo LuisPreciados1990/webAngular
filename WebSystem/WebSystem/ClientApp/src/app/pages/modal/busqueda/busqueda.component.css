@@ -1,0 +1,44 @@
+h1{
+  position:relative;
+  padding:0;
+  margin:0;
+}
+
+button {
+  border: 20px;
+}
+
+tr:hover td {
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.table td, .table th {
+  padding: 5px;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.mat-dialog-content {
+  display: block;
+  margin: 0 -24px;
+  padding: 0 24px;
+  max-height: 65vh;
+  overflow: auto;
+  height: 570px;  
+}
+
+input.mat-input-element {
+  margin-top: -1.0625em;
+}
+
+.mat-dialog-actions {
+  position: relative;
+  float: right;
+  padding: 8px 0;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 52px;
+  align-items: center;
+  margin-bottom: -24px;
+}

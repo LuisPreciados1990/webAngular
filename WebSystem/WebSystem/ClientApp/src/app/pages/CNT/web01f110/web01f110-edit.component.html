@@ -1,0 +1,42 @@
+<form class="text-center border border-light p-1" #forma="ngForm">
+    <div class="container animated fadeInRight" id="container2">
+    <div class="form-group row col-sm-12">
+
+      <label for="txtCta1" class="lsize130">Cuenta Contable:</label>
+      <input class="form-control col-sm-2"
+             type="text"
+             id="txtCta1"
+             autocomplete="off"
+             maxlength="20"
+             #txtCta1
+             [ngModel]="_plan.codigo | cuenta" (ngModelChange)="_plan.codigo = $event"
+             name="codigo"
+             required
+             [disabled]="!isNew" />
+
+
+      <label for="txtnCta1" class="lsize100">Nombre:</label>
+      <input class="form-control col-sm-7"
+             type="text"
+             id="txtnCta1"
+             autocomplete="off"
+             maxlength="150"
+             #txtnCta1
+             [(ngModel)]="_plan.nombre"
+             name="nombre"
+             required />
+
+    </div>
+
+    <div class="btn-group m-5">
+      <button type="button" class="btn btn-success" id="btnSave" (click)="saveCta(forma)">
+        <i class="fa fa-floppy-o fa-lg"></i>
+      </button>
+
+      <button type="button" class="btn btn-secondary" id="btnBack" (click)="regresar()">
+        <i class="fa fa-undo fa-lg"></i>
+      </button>
+    </div>
+
+  </div>
+</form>

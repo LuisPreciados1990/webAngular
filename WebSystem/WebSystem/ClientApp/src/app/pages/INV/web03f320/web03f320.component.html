@@ -1,0 +1,238 @@
+<form class="text-center border border-light p-1 animated fadeInRight" #forma="ngForm">
+
+  <div class="container animated fadeIn" id="container1">
+
+    <div class="form-group row col-sm-12">
+      
+      <label for="txtTrn" class="col-sm-1 col-form-label">Transacción</label>
+      <div class="col-sm-5">
+        <div class="form-group row col-sm-12">
+          <input class="form-control col-sm-2"
+                 type="text" id="txtTrn"
+                 autocomplete="off"
+                 maxlength="2"
+                 name="codigo" #txtTrn
+                 [(ngModel)]="_tipoTrn.codigo"
+                 (focusout)="cargaTrn()"
+                 (keyup.enter)="cargaTrn()"
+                 [disabled]="(_detalleT.length) || nuevoItem"
+                 required
+                 oninput="this.value = this.value.toUpperCase()" />
+          <!--<span class="add-on" (click)="buscarTrn()"><i class="fa fa-search"></i></span>-->
+
+          <input class="form-control col-sm-8"
+                 type="text"
+                 id="txtnTrn"
+                 disabled
+                 name="nombre"
+                 [(ngModel)]="_tipoTrn.nombre" />
+        </div>
+      </div>
+      
+
+      <label for="txtNumero" class="col-sm-1 col-form-label">Numero</label>
+      <div class="col-sm-2">
+      <input class="form-control"
+             type="text"
+             placeholder="00000000"
+             id="txtNumero"
+             [disabled]="(_detalleT.length) || nuevoItem"
+             name="numero"
+             [(ngModel)]="_tipoTrn.numero"
+             maxlength="8"
+             (focusout)="trnOpciones()" />
+      </div>
+
+
+      <label for="txtFecha" class="col-sm-1 col-form-label">Fecha</label>
+      <div class="col-sm-2">
+      <input class="form-control"
+             type="date"
+             id="txtFecha"
+             name="fecha_tra"
+             [ngModel]="_cabecera.fecha_tra | date:'yyyy-MM-dd'"
+             (ngModelChange)="_cabecera.fecha_tra = $event" />
+      </div>
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <label for="txtprofo" class="lsize75">Proforma</label>
+      <input class="form-control col-sm-2"
+             type="text"
+             placeholder="XX00000000"
+             id="txtprofo"
+             [disabled]="(_detalleT.length) || nuevoItem"
+             name="fac_pro"
+             [(ngModel)]="_cabecera.fac_pro"
+             maxlength="10"
+             (focusout)="trnOpciones()" />
+
+      <label for="txtBode" class="lsize60">Bodega</label>
+      <input class="form-control col-sm-1"
+             type="text" id="txtBode"
+             autocomplete="off"
+             maxlength="5"
+             name="bodega" #txtBode
+             [(ngModel)]="_cabecera.bodega"
+             (focusout)="cargaBode()"
+             (keyup.enter)="cargaBode()"
+             [disabled]="(_detalleT.length) || nuevoItem"
+             required
+             oninput="this.value = this.value.toUpperCase()" />
+      <span class="add-on" (click)="buscarBode()"><i class="fa fa-search"></i></span>
+
+      <input class="form-control searchInput col-sm-2"
+             type="text"
+             id="txtnBode"
+             disabled
+             name="nombreBode"
+             [(ngModel)]="dbBode.nombre" />
+
+      <label for="txtVende" class="lsize60">Vendedor</label>
+      <input class="form-control col-sm-1"
+             type="text" id="txtVende"
+             autocomplete="off"
+             maxlength="5"
+             name="vendedor" #txtVende
+             [(ngModel)]="_cabecera.vendedor"
+             (focusout)="cargaVende()"
+             (keyup.enter)="cargaVende()"
+             [disabled]="(_detalleT.length) || nuevoItem"
+             oninput="this.value = this.value.toUpperCase()" />
+      <span class="add-on" (click)="buscarVende()"><i class="fa fa-search"></i></span>
+
+      <input class="form-control searchInput col-sm-2"
+             type="text"
+             id="txtnVende"
+             disabled
+             name="nombreVende"
+             [(ngModel)]="dbVende.nombre" />
+
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <label for="txtcli" class="lsize75">Cliente</label>
+      <input class="form-control searchInput col-sm-1"
+             type="text"
+             name="prov_cli"
+             id="txtcli"
+             [(ngModel)]="_cabecera.prov_cli"
+             autocomplete="off"
+             maxlength="6"
+             (focusout)="cargaCli()" (keyup.enter)="cargaCli()"
+             required />
+      <span class="add-on" (click)="buscarCli()"><i class="fa fa-search"></i></span>
+
+      <label for="txtncli" class="lsize60">Nombre</label>
+      <input class="form-control searchInput col-sm-3"
+             type="text"
+             id="txtncli"
+             name="empcli"
+             [(ngModel)]="dbCLi.empcli"
+             disabled />
+
+      <label for="txtrcli" class="lsize30">Ruc</label>
+      <input class="form-control col-sm-2"
+             type="text"
+             id="txtrcli"
+             name="ruc"
+             [(ngModel)]="dbCLi.ruc"
+             disabled />
+
+      <label for="txttcli" class="lsize30">Telf.</label>
+      <input class="form-control col-sm-2"
+             type="text"
+             id="txttcli"
+             name="fono1"
+             [(ngModel)]="dbCLi.fono1"
+             disabled />
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <label for="txtecli" class="lsize75">Email</label>
+      <input class="form-control col-sm-3"
+             type="text"
+             id="txtecli"
+             name="email"
+             [(ngModel)]="dbCLi.email"
+             disabled />
+
+      <label for="txtdcli" class="lsize85">Dirección</label>
+      <input class="form-control col-sm-6"
+             type="text"
+             id="txtdcli"
+             name="direccion"
+             [(ngModel)]="dbCLi.direccion"
+             disabled />
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <label for="txtcomenta" class="lsize75">Comentario</label>
+      <input class="form-control col-sm-8"
+             type="text"
+             id="txtcomenta"
+             name="comenta"
+             [(ngModel)]="_cabecera.comenta" />
+
+      <label for="txtusuario" class="lsize70">Usuario</label>
+      <input class="form-control col-sm-1"
+             type="text"
+             id="txtusuario"
+             name="usercla"
+             [(ngModel)]="_cabecera.usercla"
+             disabled
+             maxlength="150" />
+    </div>
+
+  </div>
+
+  <div class="container" id="container2">
+    <div class="form-group row col-sm-12">
+      <button type="button" class="btn btn-primary" id="btnPlus" (click)="clickNuevoItem(forma)" [disabled]="nuevoItem">
+        <i class="fa fa-plus-circle fa-lg"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="container" id="containerP" *ngIf="nuevoItem">
+    <div class="form-group row col-sm-12">
+      <label for="txtprod" class="lsize75">Producto</label>
+      <input class="form-control searchInput col-sm-2"
+             type="text"
+             id="txtprod"
+             name="no_parte"
+             [(ngModel)]="_Prod.no_parte"
+             (focusout)="cargaProd()"
+             (keyup.enter)="cargaProd()"
+             autocomplete="off"
+             maxlength="15" />
+      <span class="add-on" (click)="buscarProd()"><i class="fa fa-search"></i></span>
+
+      <input class="form-control col-sm-5"
+             type="text"
+             id="txtnprod"
+             name="nomItem"
+             [(ngModel)]="_Prod.nombre"
+             disabled />
+
+      <label for="txtPesenta">Medida</label>
+      <input class="form-control col-sm-2"
+             type="text"
+             id="txtPesenta"
+             name="desunidad"
+             [(ngModel)]="_Prod.desunidad"
+             disabled />
+    </div>
+
+    <div class="form-group row col-sm-12">
+      <button type="button" class="btn btn-success" id="btnSave" (click)="saveTempo()">
+        <i class="fa fa-floppy-o fa-lg"></i>
+      </button>
+
+      <button type="button" class="btn btn-warning" id="btnCancel" (click)="indexTempo=-1 ; clickNuevoItem(false)">
+        <i class="fa fa-undo fa-lg"></i>
+      </button>
+    </div>
+  </div>
+
+</form>

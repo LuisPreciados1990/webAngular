@@ -1,0 +1,36 @@
+<div class="container">
+  <div mat-dialog-content>
+
+    <!--<app-diario id="DIARIO" *ngIf="'DIARIO'===repoman" [param]="data"></app-diario>-->
+
+  </div>
+
+  <div class="child">
+    <div mat-dialog-actions>
+      <button mat-raised-button (click)="printPage()">
+        <span><i class="fa fa-print fa-3x"></i>&nbsp;</span>
+      </button>
+
+      <button mat-raised-button (click)="printPage()">
+        <span><i class="fa fa-file-word-o fa-3x"></i>&nbsp;</span>
+      </button>
+
+      <button mat-raised-button (click)="printPage()">
+        <span><i class="fa fa-file-excel-o fa-3x"></i>&nbsp;</span>
+      </button>
+
+      <button mat-raised-button (click)="printPage()">
+        <span><i class="fa fa-file-pdf-o fa-3x"></i>&nbsp;</span>
+      </button>
+
+      <button mat-raised-button (click)="printPage()">
+        <span><i class="fa fa-envelope-o fa-3x"></i>&nbsp;</span>
+      </button>
+
+      <button mat-raised-button (click)="ok()" cdkFocusInitial>
+        <span><i class="fa fa-undo fa-3x"></i>&nbsp;</span>
+      </button>
+    </div>
+  </div>
+
+</div>

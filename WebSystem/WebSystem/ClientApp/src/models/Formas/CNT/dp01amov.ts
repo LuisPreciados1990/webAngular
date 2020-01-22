@@ -1,0 +1,68 @@
+export interface IDp01amov {
+    id?: number;
+    tipo_asi: string;
+    asiento: string;
+    linea: number;
+    fecha_asi: Date;
+    codmov: string;
+    tipo: string;
+    refer: string;
+    concepto?: string;
+    importe?: number;
+    importe_ex?: number;
+    cerrado?: Boolean;
+    ges_apl?: string;
+    codpro?: string;
+    numfac?: string;
+    baseret?: number;
+    por_ret?: number;
+    chequeno?: string;
+    con_ch?: string;
+    con_rt?: string;
+    numrete?: string;
+    monto_anu?: number;
+    anulado?: Boolean;
+    codsri?: string;
+    comproba?: string;
+    fecche?: Date;
+    centro_cos?: string;
+    s_sectra?: string;
+    s_tipcon?: string;
+    s_fecha1?: Date;
+    s_fecha2?:Date;
+    s_drawback?: string;
+    s_serie?: string;
+    s_secue?: string;
+    s_autoriza?: string;
+    s_idcre?: string;
+    s_nvt?: number;
+    s_nnc?: number;
+    s_nnd?: number;
+    s_base0?: number;
+    s_montoice?: number;
+    s_base12?: number;
+    s_codiva?: string;
+    s_montoiva?: number;
+    s_ri1?: Boolean;
+    s_valiva1?: number;
+    s_codri1?: string;
+    s_montori1?: number;
+    s_ri2?: Boolean;
+    s_valiva2?: number;
+    s_codri2?: string;
+    s_montori2?: number;
+    s_impcadu?: string;
+    fecha?: Date;
+    s_fecha0?: Date;
+    fecconci?: string;
+    serie_rt?: string;
+    autori_rt?: string;
+    cod_flujo?: string;
+    cat_ecp?: string;
+}
+
+export interface IDp01amovEXT extends IDp01amov {
+  nombreCta?: string;
+  debe?: number;
+  haber?: number;
+}
