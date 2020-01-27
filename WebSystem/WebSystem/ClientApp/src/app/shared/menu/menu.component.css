@@ -8,7 +8,7 @@
   color: #e1ffff;
   margin-left: auto;
   transition: all 0.25s ease-out;
-  width: 300px;
+  width: 185px;
   height: 100%;
 }
 
@@ -25,6 +25,12 @@
   }
   .nombreButton{
     display: none;
+  }
+}
+
+@media(max-width: 900px){
+  .nav-side-menu {
+    width: 100%;
   }
 }
 
