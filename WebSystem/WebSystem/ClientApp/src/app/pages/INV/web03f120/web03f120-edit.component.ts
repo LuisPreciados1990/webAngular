@@ -24,7 +24,7 @@ export class Web03f120EditComponent implements OnInit {
   public _Prod: IDp03a110 = {
     pc_ncta: "", pc_ncta2: "", pc_ncta3: "", tipo: "", estado: "A", no_parte: "", nombre: "", codinter: "", desunidad: "", aplica: "",
     modelo: "", pesocaja: 0, master: 0, codbarra: "", clase: "",subclase: "", subclase2: "", talla: "", color: "", marca: "", proveedor: "",
-    origen: "", ubica: "BO:DE:GA", exmin: 0, exmax: 0, pordes: 0, cubicau: 0,cubicac: 0, vstock:"S", iva_sn:"S",
+    origen: "", ubica: "BO:DE:GA", exmin: 0, exmax: 0, pordes: 0, cubicau: 0,cubicac: 0, vstock:true, iva_sn:"S",
     modipvp: false, modidescri: false, pideser: false, tieice: "N",pvpu1: 0,
     pvpu2: 0, desunidad2: "", hasta2: 0,pvpu3: 0, desunidad3: "", hasta3: 0,
     pvpu4: 0, desunidad4: "", hasta4: 0,pvpu5: 0, desunidad5: "", hasta5: 0
@@ -85,13 +85,21 @@ export class Web03f120EditComponent implements OnInit {
     this.prod.GetProductoByCodigo(item)
       .subscribe(x => this._Prod = x, error => console.error(error));
     this.isNew = false;
-  }   
+  }
+
+  cargaProv() {
+    console.log("DESAROLLANDO")
+  }
+
+  buscarProv() {
+    console.log("DESAROLLANDO")
+  }
 
   encera() {
     this._Prod= {
       pc_ncta: "", pc_ncta2: "", pc_ncta3: "", tipo: "", estado: "A", no_parte: "", nombre: "", codinter: "", desunidad: "", aplica: "",
       modelo: "", pesocaja: 0, master: 0, codbarra: "", clase: "", subclase: "", subclase2: "", talla: "", color: "", marca: "", proveedor: "",
-      origen: "", ubica: "BO:DE:GA", exmin: 0, exmax: 0, pordes: 0, cubicau: 0, cubicac: 0, vstock: "S", iva_sn: "S",
+      origen: "", ubica: "BO:DE:GA", exmin: 0, exmax: 0, pordes: 0, cubicau: 0, cubicac: 0, vstock: true, iva_sn: "S",
       modipvp: true, modidescri: true, pideser: false, tieice: "N", pvpu1: 0,
       pvpu2: 0, desunidad2: "", hasta2: 0, pvpu3: 0, desunidad3: "", hasta3: 0,
       pvpu4: 0, desunidad4: "", hasta4: 0, pvpu5: 0, desunidad5: "", hasta5: 0
@@ -115,7 +123,7 @@ export class Web03f120EditComponent implements OnInit {
     //}
     
     let resp: Observable<any>;
-
+    
     //Grabamos Nuevo registro
     if (this.isNew) {
       resp = this.prod.SaveItem(this._Prod);

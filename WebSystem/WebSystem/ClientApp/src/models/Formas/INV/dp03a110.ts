@@ -20,7 +20,7 @@ export interface IDp03a110 {
     factor?: number;
     desfactor?: string;
     ubica?: string;
-    vstock?: string;
+    vstock?: boolean;
     iva_sn?: string;
     exmin?: number;
     exmax?: number;

@@ -28,7 +28,7 @@ namespace WebSystem.Models.Formas.INV
         public decimal Factor { get; set; }
         public string Desfactor { get; set; }
         public string Ubica { get; set; }
-        public string Vstock { get; set; }
+        public Boolean Vstock { get; set; }
         public string Iva_sn { get; set; }
         public decimal Exmin { get; set; }
         public decimal Exmax { get; set; }

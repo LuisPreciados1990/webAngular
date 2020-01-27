@@ -39,37 +39,56 @@
 
             <div class="form-group row col-sm-12">
               <label for="cboKardex" class="lsize70">U. Kardex: </label>
-              <select class="form-control col-sm-2"
-                      id="cboKardex"
+              <select class="form-control col-sm-2"                      
                       [(ngModel)]="_Prod.desunidad"
                       name="_Prod.desunidad">
-                <option *ngFor="let uni of iUnid" [value]="uni.codigo">{{uni.nombre}}</option>
+                <option *ngFor="let uni of iUnid" [value]="uni.desunidad">{{uni.nombre}}</option>
               </select>
 
               <label for="txtAplica" class="lsize70">Aplicación: </label>
-              <input class="form-control col-sm-4" type="text" id="txtAplica" autocomplete="off" maxlength="250"
-                     [(ngModel)]="ngAplica" name="txtAplica" />
+              <input class="form-control col-sm-4"
+                     type="text"                     
+                     autocomplete="off"
+                     maxlength="250"
+                     [(ngModel)]="_Prod.aplica"
+                     name="aplica" />
 
               <label for="txtModelo" class="lsize70">Modelo: </label>
-              <input class="form-control col-sm-2" type="text" id="txtModelo" autocomplete="off" maxlength="15"
-                     [(ngModel)]="ngModelo" name="txtModelo" />
+              <input class="form-control col-sm-2"
+                     type="text"
+                     autocomplete="off"
+                     maxlength="15"
+                     [(ngModel)]="_Prod.modelo"
+                     name="modelo" />
             </div>
 
             <div class="form-group row col-sm-12">
               <label for="txtPesoCaja" class="lsize70">Peso Caja: </label>
-              <input class="form-control col-sm-1" type="number" id="txtPesoCaja" autocomplete="off"
-                     [(ngModel)]="ngPesoCaja" name="txtPesoCaja" />
+              <input class="form-control col-sm-1"
+                     type="number"                     
+                     autocomplete="off"
+                     [(ngModel)]="_Prod.pesocaja"
+                     name="pesocaja" />
 
               <label for="txtMaster" class="lsize65">Master: </label>
-              <input class="form-control col-sm-1" type="number" id="txtMaster" autocomplete="off"
-                     [(ngModel)]="ngMaster" name="txtMaster" />
+              <input class="form-control col-sm-1"
+                     type="number"
+                     autocomplete="off"
+                     [(ngModel)]="_Prod.master"
+                     name="master" />
 
               <label for="txtCodBarra" class="lsize100">Cód. de barras: </label>
-              <input class="form-control col-sm-2" type="text" id="txtCodBarra" autocomplete="off" maxlength="20"
-                     [(ngModel)]="ngCodBarra" name="txtCodBarra" />
+              <input class="form-control col-sm-2"
+                     type="text"
+                     autocomplete="off"
+                     maxlength="20"
+                     [(ngModel)]="_Prod.codbarra"
+                     name="codbarra" />
 
               <label for="cboClase" class="lsize65">Clase: </label>
-              <select class="form-control col-sm-2" id="cboClase" [(ngModel)]="ngClase" name="cboClase">
+              <select class="form-control col-sm-2"
+                      [(ngModel)]="_Prod.clase"
+                      name="clase">
                 <option *ngFor="let cla of iClase" [value]="cla.codigo">{{cla.nombre}}</option>
               </select>
 
@@ -77,82 +96,123 @@
 
             <div class="form-group row col-sm-12">
               <label for="cboSubcla" class="lsize70">SubClase: </label>
-              <select class="form-control col-sm-3" id="cboSubcla" [(ngModel)]="ngSubcla" name="cboSubcla">
+              <select class="form-control col-sm-3"
+                      [(ngModel)]="_Prod.subclase"
+                      name="subclase">
                 <option *ngFor="let scla of iSubCla" [value]="scla.codigo">{{scla.nombre}}</option>
               </select>
 
               <label for="cboSubcla2" class="lsize100">SubClase 2: </label>
-              <select class="form-control col-sm-2" id="cboSubcla2" [(ngModel)]="ngSubcla2" name="cboSubcla2">
+              <select class="form-control col-sm-2"
+                      [(ngModel)]="_Prod.subclase2"
+                      name="subclase2">
                 <option *ngFor="let scla2 of iSubCla2" [value]="scla2.codigo">{{scla2.nombre}}</option>
               </select>
 
               <label for="cboTalla" class="lsize65">Talla: </label>
-              <select class="form-control col-sm-2" id="cboTalla" [(ngModel)]="ngTalla" name="cboTalla">
+              <select class="form-control col-sm-2"
+                      [(ngModel)]="_Prod.talla"
+                      name="talla">
                 <option *ngFor="let tall of iTalla" [value]="tall.codigo">{{tall.nombre}}</option>
               </select>
             </div>
 
             <div class="form-group row col-sm-12">
               <label for="cboColor" class="lsize70">Color: </label>
-              <select class="form-control col-sm-2" id="cboColor" [(ngModel)]="ngColor" name="cboColor">
+              <select class="form-control col-sm-2"
+                      [(ngModel)]="_Prod.color"
+                      name="color">
                 <option *ngFor="let col of iColor" [value]="col.codigo">{{col.nombre}}</option>
               </select>
 
               <label for="cboMarca" class="lsize60">Marca: </label>
-              <select class="form-control col-sm-2" id="cboMarca" [(ngModel)]="ngMarca" name="cboMarca">
+              <select class="form-control col-sm-2"
+                      [(ngModel)]="_Prod.marca"
+                      name="marca">
                 <option *ngFor="let marc of iMarca" [value]="marc.codigo">{{marc.nombre}}</option>
               </select>
 
               <label for="txtcli" class="lsize70">Proveedor:</label>
-              <input class="form-control searchInput col-sm-1" type="text" id="txtprov"
-                     #txtprov name="txtprov" [(ngModel)]="ngprov" maxlength="6"
-                     (focusout)="cargaProv()" (keyup.enter)="cargaProv()" autocomplete="off" />
+              <input class="form-control searchInput col-sm-1"
+                     type="text" #txtprov
+                     autocomplete="off"
+                     maxlength="6"
+                     [(ngModel)]="_Prod.proveedor" 
+                     name="proveedor" 
+                     (focusout)="cargaProv()" (keyup.enter)="cargaProv()"  />
               <span class="add-on" (click)="buscarProv()"><i class="fa fa-search"></i></span>
 
               <label for="txtnprov" class="lsize60">Nombre:</label>
-              <input class="form-control searchInput col-sm-2" type="text" id="txtnprov" disabled
-                     name="txtnprov" [(ngModel)]="ngnprov" />
+              <input class="form-control searchInput col-sm-2"
+                     type="text"
+                     disabled
+                     [(ngModel)]="ngnprov"
+                     name="txtnprov" />
 
             </div>
 
             <div class="form-group row col-sm-12">
               <label for="txtOrigen" class="lsize70">Origen:</label>
-              <input class="form-control col-sm-2" type="text" id="txtOrigen" autocomplete="off" maxlength="20"
-                     [(ngModel)]="ngOrigen" name="txtOrigen" />
+              <input class="form-control col-sm-2"
+                     type="text"
+                     autocomplete="off"
+                     maxlength="20"
+                     [(ngModel)]="_Prod.origen"
+                     name="origen" />
 
               <label for="txtUbicaF" class="lsize115">Ubicación Física:</label>
-              <input class="form-control col-sm-2" type="text" id="txtUbicaF" autocomplete="off"
-                     [(ngModel)]="ngUbicaF" name="txtUbicaF" disabled />
+              <input class="form-control col-sm-2"
+                     type="text"
+                     autocomplete="off"
+                     [(ngModel)]="_Prod.ubica"
+                     name="ubica"
+                     disabled />
 
               <label for="txtMinimo" class="lsize80">Mínimos: </label>
-              <input class="form-control col-sm-1" type="number" id="txtMinimo" autocomplete="off"
-                     [(ngModel)]="ngMinimo" name="txtMinimo" />
+              <input class="form-control col-sm-1"
+                     type="number"
+                     autocomplete="off"
+                     [(ngModel)]="_Prod.exmin"
+                     name="exmin" />
 
               <label for="txtMaximo" class="lsize80">Máxmimos: </label>
-              <input class="form-control col-sm-1" type="number" id="txtMaximo" autocomplete="off"
-                     [(ngModel)]="ngMaximo" name="txtMaximo" />
+              <input class="form-control col-sm-1"
+                     type="number"
+                     autocomplete="off"
+                     [(ngModel)]="_Prod.exmax"
+                     name="exmax" />
 
             </div>
 
             <div class="form-group row col-sm-12">
               <label for="txtDscto" class="lsize70">% Dscto: </label>
-              <input class="form-control col-sm-1" type="number" id="txtDscto" autocomplete="off"
-                     [(ngModel)]="ngDscto" name="txtDscto" />
+              <input class="form-control col-sm-1"
+                     type="number"
+                     autocomplete="off"
+                     [(ngModel)]="_Prod.pordes"
+                     name="pordes" />
 
               <label for="txtCubicaU" class="lsize70">Cubica U. </label>
-              <input class="form-control col-sm-1" type="number" id="txtCubicaU" autocomplete="off"
-                     [(ngModel)]="ngCubicaU" name="txtCubicaU" />
+              <input class="form-control col-sm-1"
+                     type="number"
+                     autocomplete="off"
+                     [(ngModel)]="_Prod.cubicau"
+                     name="cubicau" />
 
               <label for="txtCubicaT" class="lsize70">Cubica T. </label>
-              <input class="form-control col-sm-1" type="number" id="txtCubicaT" autocomplete="off"
-                     [(ngModel)]="ngCubicaT" name="txtCubicaT" />
+              <input class="form-control col-sm-1"
+                     type="number"
+                     autocomplete="off"
+                     [(ngModel)]="_Prod.cubicac"
+                     name="cubicac" />
             </div>
           </div>
 
           <div class="container" id="container1_2">
             <div class="form-group row col-sm-12">
-              <mat-checkbox class="marginck col-sm-3" [(ngModel)]="ngVtaStock"
-                            name="chVtaStock">Ventas solo si hay Stock..?</mat-checkbox>
+              <mat-checkbox class="marginck col-sm-3"
+                            [(ngModel)]="_Prod.vstock"
+                            name="vstock">Ventas solo si hay Stock..?</mat-checkbox>
 
               <mat-checkbox class="marginck col-sm-3" [(ngModel)]="ngGrabaIva"
                             name="chGrabaIva">Producto Graba IVA</mat-checkbox>
