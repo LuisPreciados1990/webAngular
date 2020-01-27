@@ -1,20 +1,26 @@
-<div>
-  <app-nav-menu></app-nav-menu>  
+
+  <app-nav-menu></app-nav-menu>
   <app-menu [nameMenu]="'Menu'"></app-menu>
   <div class="viewPrograms">
-    
-    <nav mat-tab-nav-bar>
-      <a mat-tab-link
-         *ngFor="let link of navLinks"
-         [routerLink]="link.link"
-         routerLinkActive #rla="routerLinkActive"
-         [active]="rla.isActive">
+    <div>
 
-      </a>
-    </nav>
+      <nav mat-tab-nav-bar id="tageo">
+        <a mat-tab-link
+           *ngFor="let link of navLinks"
+           [routerLink]="link.link"
+           routerLinkActive #rla="routerLinkActive"
+           [active]="rla.isActive">
 
-    <router-outlet></router-outlet>
+        </a>
+      </nav>
+    </div>
 
+
+    <div id="outlet">
+      <router-outlet>
+
+      </router-outlet>
+    </div>
   </div>
-  <app-footer></app-footer>
-</div>
+
+<app-footer class="fo mt-4"></app-footer>

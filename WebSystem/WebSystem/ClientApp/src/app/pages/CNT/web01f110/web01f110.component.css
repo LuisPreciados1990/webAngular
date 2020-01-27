@@ -1,11 +1,22 @@
 @import '../../../../styles.css';
 
+#navigationSS{
+    display: flex;
+    justify-content: flex-end;
+}
+
 button {
   border: 20px;
 }
 
+.tableXX{
+    overflow-y: auto;
+    overflow: auto;
+}
+
 tr:hover td {
-  background-color: #ccc;
+  background-color: #444;
+  color: white; 
   cursor: pointer;
 }
 
@@ -16,7 +27,6 @@ td{
 .btn-danger, .btn-info {
   width: 70px;
   height: 30px;
-  border-radius: 10px;
 }
 
 .mat-form-field { 
@@ -26,7 +36,6 @@ td{
 #btnNew {
   width: 70px;
   height: 70px;
-  border-radius: 70px;
   border: 0px;
   padding: 0px;
 }

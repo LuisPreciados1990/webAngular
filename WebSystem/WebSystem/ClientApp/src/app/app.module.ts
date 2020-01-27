@@ -22,13 +22,15 @@ import { AuthInterceptorService } from 'src/services/general/auth-interceptor.se
 
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
+import { FormrootComponent } from './formroot/formroot.component';
 registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
     LoginComponent,
     NopagefoundComponent,    
-    AppComponent    
+    AppComponent,
+    FormrootComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

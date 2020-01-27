@@ -294,19 +294,20 @@ mat-tab-group {
 table {
   width: 100%;
   border-collapse: collapse;
-  border-radius: 1em;
   overflow: hidden;
   padding: 0px;
   margin: 0px;
 }
 
 th {
+
   padding: 5px;
-  background-color: #AEFEDC;
+  background-color: #444;
   border-bottom: 2px solid white;
   text-align: center;
   font-weight: bold;
   font-size: medium;
+  color: white;
 }
 
 td {
