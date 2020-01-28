@@ -3,6 +3,6 @@ export interface IDp01a110 {
   codigo: string;
   codigo_Aux: string;
   nombre: string;
-  detalle: Boolean;
-  estado: string;
+  detalle?: Boolean;
+  estado?: string;
 }

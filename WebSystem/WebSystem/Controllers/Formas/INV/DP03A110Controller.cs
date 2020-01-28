@@ -101,5 +101,18 @@ namespace WebSystem.Controllers.Formas.INV
             return true;
         }
 
+        [HttpPut("updateItem/{id}")]
+        public async Task<IActionResult> UpdateItem([FromRoute] int id, [FromBody] DP03A110 model)
+        {
+            if (id != model.Id)
+            {
+                return BadRequest();
+            }
+            _context.Entry(model).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
     }
 }

@@ -29,7 +29,7 @@ namespace WebSystem.Models.Formas.INV
         public string Desfactor { get; set; }
         public string Ubica { get; set; }
         public Boolean Vstock { get; set; }
-        public string Iva_sn { get; set; }
+        public Boolean Iva_sn { get; set; }
         public decimal Exmin { get; set; }
         public decimal Exmax { get; set; }
         public decimal V_ultcom { get; set; }
@@ -101,7 +101,7 @@ namespace WebSystem.Models.Formas.INV
         public string Codvent { get; set; }
         public DateTime? F_aju { get; set; }
         public string Tp_items { get; set; }
-        public string TieICE { get; set; }
+        public Boolean TieICE { get; set; }
         public decimal Porcomia { get; set; }
         public decimal Porcomib { get; set; }
         public string Meses { get; set; }

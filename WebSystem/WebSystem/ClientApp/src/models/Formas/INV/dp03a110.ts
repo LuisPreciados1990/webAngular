@@ -21,7 +21,7 @@ export interface IDp03a110 {
     desfactor?: string;
     ubica?: string;
     vstock?: boolean;
-    iva_sn?: string;
+    iva_sn?: boolean;
     exmin?: number;
     exmax?: number;
     v_ultcom?: number;
@@ -93,7 +93,7 @@ export interface IDp03a110 {
     codvent?: string;
     f_aju?: Date;
     tp_items?: string;
-    tieice?: string;
+    tieice?: boolean;
     porcomia?: number;
     porcomib?: number;
     meses?: string;

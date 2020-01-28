@@ -26,14 +26,7 @@ export class Dp03a110Service {
     return this.http.post<IDp03a110>(this.apiURL + "/SaveItem", producto);
   }
 
-  CheckNoparte(codigo: string): boolean {
-
-    let iProd: IDp03a110;
-
-    this.http.get<IDp03a110>(this.apiURL + "/GetProductoByCodigo/" + codigo)
-    .subscribe(x => this.xxx(x), error => console.error(error))
-    //console.log(iProd)
-
+  CheckNoparte(codigo: string): boolean {    
     if (this.http.get<IDp03a110>(this.apiURL + "/GetProductoByCodigo/" + codigo) === null) {
       return false
     } else {
@@ -41,10 +34,8 @@ export class Dp03a110Service {
     }   
   }
 
-  xxx(val: IDp03a110) {
-    if (val) {
-      console.log(val);
-    }
+  updateItemById(prod: IDp03a110): Observable<IDp03a110> {
+    return this.http.put<IDp03a110>(this.apiURL + "/updateItem/" + prod.id, prod);
   }
 
 }

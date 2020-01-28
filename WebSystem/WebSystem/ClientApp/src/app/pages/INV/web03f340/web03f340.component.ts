@@ -179,7 +179,7 @@ export class Web03f340Component implements OnInit  {
         this.pPreciou= producto.pvpu1;
         this.pDecuento= 0;
         this.pPreciot = 0;
-        this.pIvasn = producto.iva_sn;
+        this.pIvasn = "S";
       
     }
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 import { Dp03a110Service, AlptablaService, Dp01a110Service, ModalFormsService } from '../../../../services/services.index';
 
@@ -22,13 +22,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class Web03f120EditComponent implements OnInit {
   
   public _Prod: IDp03a110 = {
-    pc_ncta: "", pc_ncta2: "", pc_ncta3: "", tipo: "", estado: "A", no_parte: "", nombre: "", codinter: "", desunidad: "", aplica: "",
+    pc_ncta: "", pc_ncta2: "", pc_ncta3: "", tipo: "N", estado: "A", no_parte: "", nombre: "", codinter: "", desunidad: "", aplica: "",
     modelo: "", pesocaja: 0, master: 0, codbarra: "", clase: "",subclase: "", subclase2: "", talla: "", color: "", marca: "", proveedor: "",
-    origen: "", ubica: "BO:DE:GA", exmin: 0, exmax: 0, pordes: 0, cubicau: 0,cubicac: 0, vstock:true, iva_sn:"S",
-    modipvp: false, modidescri: false, pideser: false, tieice: "N",pvpu1: 0,
-    pvpu2: 0, desunidad2: "", hasta2: 0,pvpu3: 0, desunidad3: "", hasta3: 0,
-    pvpu4: 0, desunidad4: "", hasta4: 0,pvpu5: 0, desunidad5: "", hasta5: 0
+    origen: "", ubica: "BO:DE:GA", exmin: 0, exmax: 0, pordes: 0, cubicau: 0, cubicac: 0, vstock: true, iva_sn: true, modipvp: false,
+    modidescri: false, pideser: false, tieice: false, pvpu1: 0, pvpu2: 0, desunidad2: "", hasta2: 0, pvpu3: 0, desunidad3: "", hasta3: 0,
+    pvpu4: 0, desunidad4: "", hasta4: 0, pvpu5: 0, desunidad5: "", hasta5: 0, comenta:""
   };
+
+  public _cta1: IDp01a110 = { codigo: "", nombre: "", codigo_Aux: "" };
+  public _cta2: IDp01a110 = { codigo: "", nombre: "", codigo_Aux: "" };
+  public _cta3: IDp01a110 = { codigo: "", nombre: "", codigo_Aux: "" };
   
   public isNew: boolean = false;
 
@@ -43,7 +46,7 @@ export class Web03f120EditComponent implements OnInit {
   constructor(public prod: Dp03a110Service,
     public alpTabla: AlptablaService,
     public dialog: MatDialog,
-    public cta: Dp01a110Service,
+    public ctaService: Dp01a110Service,
     private router: Router,
     private activateRoute: ActivatedRoute,
     public modalForms: ModalFormsService) {
@@ -83,8 +86,37 @@ export class Web03f120EditComponent implements OnInit {
   
   loadItem(item: string) {
     this.prod.GetProductoByCodigo(item)
-      .subscribe(x => this._Prod = x, error => console.error(error));
+      .subscribe(x => {
+        this._Prod = x;
+        this.loadCta1(this._Prod.pc_ncta);
+        this.loadCta2(this._Prod.pc_ncta2);
+        this.loadCta3(this._Prod.pc_ncta3);
+      }, error => console.error(error));
     this.isNew = false;
+  }
+
+  loadCta1(cta: string) {
+    if (cta != "") {
+      this.ctaService.getPlanCtaByCodigo(cta).subscribe(cta => this._cta1 = cta);
+    } else {
+      this._cta1 = { codigo: "", nombre: "", codigo_Aux: "" };
+    }
+  }
+
+  loadCta2(cta: string) {
+    if (cta != "") {
+      this.ctaService.getPlanCtaByCodigo(cta).subscribe(cta => this._cta2 = cta);
+    } else {
+      this._cta2 = { codigo: "", nombre: "", codigo_Aux: "" };
+    }
+  }
+
+  loadCta3(cta: string) {
+    if (cta != "") {
+      this.ctaService.getPlanCtaByCodigo(cta).subscribe(cta => this._cta3 = cta);
+    } else {
+      this._cta3 = { codigo: "", nombre: "", codigo_Aux: "" };
+    }
   }
 
   cargaProv() {
@@ -97,17 +129,22 @@ export class Web03f120EditComponent implements OnInit {
 
   encera() {
     this._Prod= {
-      pc_ncta: "", pc_ncta2: "", pc_ncta3: "", tipo: "", estado: "A", no_parte: "", nombre: "", codinter: "", desunidad: "", aplica: "",
+      pc_ncta: "", pc_ncta2: "", pc_ncta3: "", tipo: "N", estado: "A", no_parte: "", nombre: "", codinter: "", desunidad: "", aplica: "",
       modelo: "", pesocaja: 0, master: 0, codbarra: "", clase: "", subclase: "", subclase2: "", talla: "", color: "", marca: "", proveedor: "",
-      origen: "", ubica: "BO:DE:GA", exmin: 0, exmax: 0, pordes: 0, cubicau: 0, cubicac: 0, vstock: true, iva_sn: "S",
-      modipvp: true, modidescri: true, pideser: false, tieice: "N", pvpu1: 0,
+      origen: "", ubica: "BO:DE:GA", exmin: 0, exmax: 0, pordes: 0, cubicau: 0, cubicac: 0, vstock: true, iva_sn: true,
+      modipvp: true, modidescri: true, pideser: false, tieice: false, pvpu1: 0, 
       pvpu2: 0, desunidad2: "", hasta2: 0, pvpu3: 0, desunidad3: "", hasta3: 0,
-      pvpu4: 0, desunidad4: "", hasta4: 0, pvpu5: 0, desunidad5: "", hasta5: 0
+      pvpu4: 0, desunidad4: "", hasta4: 0, pvpu5: 0, desunidad5: "", hasta5: 0, comenta: ""
     };
+
+    this._cta1 = { codigo: "", nombre: "", codigo_Aux: "" };
+    this._cta2 = { codigo: "", nombre: "", codigo_Aux: "" };
+    this._cta3 = { codigo: "", nombre: "", codigo_Aux: "" };
+
     this.isNew = true;
   }
 
-  saveProd(form: NgForm) {
+  saveProd(form: NgForm) {    
 
     if (form.controls['no_parte'].invalid) {
       this.modalForms.messageboxComponent("Alerta", "Debe ingresar centro de costo");
@@ -128,8 +165,8 @@ export class Web03f120EditComponent implements OnInit {
     if (this.isNew) {
       resp = this.prod.SaveItem(this._Prod);
 
-    } else {
-      //resp = this.ccos.updateCCostoById(this._Prod);
+    } else {      
+      resp = this.prod.updateItemById(this._Prod);
     }
     
     resp.subscribe(ok => {
