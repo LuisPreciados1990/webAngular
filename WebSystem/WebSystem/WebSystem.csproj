@@ -62,7 +62,6 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\pipes\" />
-    <Folder Include="ClientApp\src\app\utilities\" />
     <Folder Include="ClientApp\src\assets\images\" />
     <Folder Include="ClientApp\src\services\Formas\CNT\" />
     <Folder Include="ClientApp\src\services\Formas\INV\" />

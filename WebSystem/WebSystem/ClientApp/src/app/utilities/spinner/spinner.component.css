@@ -1,4 +1,4 @@
-.spinner {
+/*.spinner {
   margin: 100px auto;
   width: 40px;
   height: 40px;
@@ -64,4 +64,391 @@
     transform: rotate(-360deg);
     -webkit-transform: rotate(-360deg);
   }
+}*/
+
+.circled{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: #171717;
+    margin: 5px;
 }
+
+#spiners {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  animation: backgAnim ease-in-out 2s;
+  animation-iteration-count: infinite;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#cA{
+  transform: translateY(25px);
+  animation:ease-in-out 1s;
+}
+
+#cB {
+  animation: cBnimate ease-in-out 1s;
+}
+
+#cC {
+  transform: translateY(-25px);
+  animation: cCnimate ease-in-out 1s;
+}
+
+@-webkit-keyframes cAnimate{
+    0% {
+      transform: translateY(25px);
+    }
+    80% {
+      transform: translateY(-5px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+}
+
+@-webkit-keyframes cBnimate {
+  0% {
+    transform: translateX(0px);
+  }
+
+  80% {
+    transform: translateX(-45px);
+  }
+
+  100% {
+    transform: translateX(-40px);
+  }
+}
+
+@-webkit-keyframes cCnimate {
+  0% {
+    transform: translateY(-25px);
+  }
+  80% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/*@-webkit-keyframes spinersAn {
+    0% {
+      transform: rotate(0deg);
+    }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}*/
+
+
+@-webkit-keyframes backgAnim{
+  0% {
+    background-image: url('./render/snip0000.png');
+  }
+  1% {
+    background-image: url('./render/snip0001.png');
+  }
+  2% {
+    background-image: url('./render/snip0003.png');
+  }
+  3% {
+    background-image: url('./render/snip0005.png');
+  }
+  4% {
+    background-image: url('./render/snip0006.png');
+  }
+  5% {
+    background-image: url('./render/snip0007.png');
+  }
+  6% {
+    background-image: url('./render/snip0008.png');
+  }
+  7% {
+    background-image: url('./render/snip0010.png');
+  }
+  8% {
+    background-image: url('./render/snip0011.png');
+  }
+  9% {
+    background-image: url('./render/snip0012.png');
+  }
+  10% {
+    background-image: url('./render/snip0013.png');
+  }
+  11% {
+    background-image: url('./render/snip0015.png');
+  }
+  12% {
+    background-image: url('./render/snip0016.png');
+  }
+  13% {
+    background-image: url('./render/snip0017.png');
+  }
+  14% {
+    background-image: url('./render/snip0018.png');
+  }
+  15% {
+    background-image: url('./render/snip0019.png');
+  }
+  16% {
+    background-image: url('./render/snip0020.png');
+  }
+  17% {
+    background-image: url('./render/snip0021.png');
+  }
+  18% {
+    background-image: url('./render/snip0022.png');
+  }
+  19% {
+    background-image: url('./render/snip0023.png');
+  }
+  20% {
+    background-image: url('./render/snip0025.png');
+  }
+  21% {
+    background-image: url('./render/snip0026.png');
+  }
+  22% {
+    background-image: url('./render/snip0027.png');
+  }
+  23% {
+    background-image: url('./render/snip0028.png');
+  }
+  24% {
+    background-image: url('./render/snip0030.png');
+  }
+  25% {
+    background-image: url('./render/snip0031.png');
+  }
+  26% {
+    background-image: url('./render/snip0032.png');
+  }
+  27% {
+    background-image: url('./render/snip0033.png');
+  }
+  28% {
+    background-image: url('./render/snip0035.png');
+  }
+  29% {
+    background-image: url('./render/snip0036.png');
+  }
+  30% {
+    background-image: url('./render/snip0037.png');
+  }
+  31% {
+    background-image: url('./render/snip0038.png');
+  }
+  32% {
+    background-image: url('./render/snip0040.png');
+  }
+  33% {
+    background-image: url('./render/snip0041.png');
+  }
+  34% {
+    background-image: url('./render/snip0042.png');
+  }
+  35% {
+    background-image: url('./render/snip0043.png');
+  }
+  36% {
+    background-image: url('./render/snip0045.png');
+  }
+  37% {
+    background-image: url('./render/snip0046.png');
+  }
+  38% {
+    background-image: url('./render/snip0047.png');
+  }
+  39% {
+    background-image: url('./render/snip0048.png');
+  }
+  40% {
+    background-image: url('./render/snip0050.png');
+  }
+  41% {
+    background-image: url('./render/snip0051.png');
+  }
+  42% {
+    background-image: url('./render/snip0052.png');
+  }
+  43% {
+    background-image: url('./render/snip0054.png');
+  }
+  44% {
+    background-image: url('./render/snip0055.png');
+  }
+  45% {
+    background-image: url('./render/snip0056.png');
+  }
+  46% {
+    background-image: url('./render/snip0057.png');
+  }
+  47% {
+    background-image: url('./render/snip0058.png');
+  }
+  48% {
+    background-image: url('./render/snip0060.png');
+  }
+  49% {
+    background-image: url('./render/snip0061.png');
+  }
+  50% {
+    background-image: url('./render/snip0062.png');
+  }
+  51% {
+    background-image: url('./render/snip0063.png');
+  }
+  52% {
+    background-image: url('./render/snip0065.png');
+  }
+  53% {
+    background-image: url('./render/snip0066.png');
+  }
+  54% {
+    background-image: url('./render/snip0067.png');
+  }
+  55% {
+    background-image: url('./render/snip0068.png');
+  }
+  56% {
+    background-image: url('./render/snip0070.png');
+  }
+  57% {
+    background-image: url('./render/snip0071.png');
+  }
+  58% {
+    background-image: url('./render/snip0072.png');
+  }
+  59% {
+    background-image: url('./render/snip0073.png');
+  }
+  60% {
+    background-image: url('./render/snip0075.png');
+  }
+  61% {
+    background-image: url('./render/snip0076.png');
+  }
+  62% {
+    background-image: url('./render/snip0077.png');
+  }
+  63% {
+    background-image: url('./render/snip0078.png');
+  }
+  64% {
+    background-image: url('./render/snip0080.png');
+  }
+  65% {
+    background-image: url('./render/snip0081.png');
+  }
+  66% {
+    background-image: url('./render/snip0082.png');
+  }
+  67% {
+    background-image: url('./render/snip0083.png');
+  }
+  68% {
+    background-image: url('./render/snip0085.png');
+  }
+  69% {
+    background-image: url('./render/snip0086.png');
+  }
+  70% {
+    background-image: url('./render/snip0087.png');
+  }
+  71% {
+    background-image: url('./render/snip0088.png');
+  }
+  72% {
+    background-image: url('./render/snip0090.png');
+  }
+  73% {
+    background-image: url('./render/snip0093.png');
+  }
+  74% {
+    background-image: url('./render/snip0095.png');
+  }
+  75% {
+    background-image: url('./render/snip0097.png');
+  }
+  76% {
+    background-image: url('./render/snip0099.png');
+  }
+  77% {
+    background-image: url('./render/snip0101.png');
+  }
+  78% {
+    background-image: url('./render/snip0103.png');
+  }
+  79% {
+    background-image: url('./render/snip0107.png');
+  }
+  80% {
+    background-image: url('./render/snip0110.png');
+  }
+  81% {
+    background-image: url('./render/snip0115.png');
+  }
+  82% {
+    background-image: url('./render/snip0125.png');
+  }
+  83% {
+    background-image: url('./render/snip0130.png');
+  }
+  84% {
+    background-image: url('./render/snip0136.png');
+  }
+  85% {
+    background-image: url('./render/snip0142.png');
+  }
+  86% {
+    background-image: url('./render/snip0145.png');
+  }
+  87% {
+    background-image: url('./render/snip0148.png');
+  }
+  88% {
+    background-image: url('./render/snip0152.png');
+  }
+  89% {
+    background-image: url('./render/snip0156.png');
+  }
+  90% {
+    background-image: url('./render/snip0160.png');
+  }
+  91% {
+    background-image: url('./render/snip0163.png');
+  }
+  92% {
+    background-image: url('./render/snip0166.png');
+  }
+  93% {
+    background-image: url('./render/snip0168.png');
+  }
+  94% {
+    background-image: url('./render/snip0170.png');
+  }
+  96% {
+    background-image: url('./render/snip0172.png');
+  }
+  97% {
+    background-image: url('./render/snip0174.png');
+  }
+  98% {
+    background-image: url('./render/snip0176.png');
+  }
+  99% {
+    background-image: url('./render/snip0178.png');
+  }
+  100% {
+    background-image: url('./render/snip0180.png');
+  }
+
+
+}
+
