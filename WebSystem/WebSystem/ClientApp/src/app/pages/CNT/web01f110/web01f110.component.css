@@ -1,13 +1,44 @@
 @import '../../../../styles.css';
 
+thead {
+  background-image: url('/assets/bg/bg.png');
+}
+
 #navigationSS{
     display: flex;
     justify-content: flex-end;
 }
 
-button {
-  border: 20px;
+.formulariosWebs{
+    width: 100%;
+    overflow-y: scroll;
+    z-index: -10000;
 }
+
+.but1 {
+  color: gray;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.but1:hover{
+    color: steelblue;
+    background-color: #444444;
+}
+
+.but2 {
+  color: gray;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+  .but2:hover {
+    color: orangered;
+    background-color: #444444;
+  }
+
 
 .tableXX{
     overflow-y: auto;
@@ -24,6 +55,42 @@ td{
   padding:2px;
 }
 
+#txtNombre{
+    border: none;
+    border-bottom: solid 0.5px gray;
+    border-radius: 0px;
+    width: 100%;
+}
+
+#buscar {
+  width: 100%;
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+}
+
+#buttonHeadeSecond {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#anadir {
+  color: gray;
+  cursor: pointer;
+  transition: ease all 0.3s;
+  border-bottom: solid 0px steelblue;
+  display: flex;
+  justify-content: stretch;
+}
+
+
+#anadir:hover{
+    transition: ease all 0.5s;
+    color: steelblue;
+    border-bottom: solid 4px steelblue;
+}
+
 .btn-danger, .btn-info {
   width: 70px;
   height: 30px;
@@ -33,13 +100,6 @@ td{
   width: 800px;
 }
 
-#btnNew {
-  width: 70px;
-  height: 70px;
-  border: 0px;
-  padding: 0px;
-}
-
 .btn-group {
   position: relative;
   width: 38%;  
@@ -47,8 +107,3 @@ td{
   float: right;
 }
 
-.btn {
-  width: 50%;
-  border: 0px;
-  padding: 0px;
-}

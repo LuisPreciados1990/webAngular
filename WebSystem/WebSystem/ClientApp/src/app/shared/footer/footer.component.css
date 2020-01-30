@@ -6,6 +6,7 @@ footer {
   height: 25px;
   background-color: #2e353d;
   border-style: none;
+  z-index: 50000;
 }
 p{
   position:relative;

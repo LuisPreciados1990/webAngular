@@ -9,38 +9,38 @@
     <ul id="menu-content" class="menu-content collapse out" *ngFor="let ge of gesti; let i = index">
       <!--NOMBRE DE GESTIONES-->
       <li data-toggle="collapse" attr.data-target="#{{ge.codigo}}" class="collapsed">
+        <span class="arrow float-lg-right"></span>
         <div class="menuFlex p-2">
           <i class="fa fa-{{ge.namebmp}} fa-lg mr-2"></i>
-          <div class="nombreButton">{{ge.nombreCorto}}</div>
-          <span class="arrow"></span>
-        </div>          
-        
+          <div class="nombreButton">{{ge.nombreCorto}} </div>
+        </div>
+
       </li>
 
-      <ul data-toggle="collapse" style="background-color:#55789B"
+      <div data-toggle="collapse" style="background-color:#55789B"
           class="collapse" id="{{ge.codigo}}"
           *ngFor="let op of opciones ; let j = index">
 
-        <li data-toggle="collapse" class="collapsed"
+        <div data-toggle="collapse" class="collapsed"
             attr.data-target="#{{ge.codigo+op.Codigo+i.toString()+j.toString()}}">
           &nbsp;
           <a><i class="fa fa-plus fa-lg"></i>{{op.Nombre}}</a><span class="arrow"></span>
-        </li>
+        </div>
 
-        <ul *ngIf="prg && prg.length"
+        <div *ngIf="prg && prg.length"
             class="sub-menu collapse "
             id="{{ge.codigo+op.Codigo+i.toString()+j.toString()}}">
           <div *ngFor="let pr of prg">
-            <li *ngIf="pr.gesApl==[ge.codigo] && pr.tarea==[op.Codigo]">
+            <div *ngIf="pr.gesApl==[ge.codigo] && pr.tarea==[op.Codigo]">
               <a (click)="openTab([pr.describe],pr.nombre)">
                 &nbsp;&nbsp;
                 {{pr.describe}}
               </a>
-            </li>
+            </div>
           </div>
-        </ul>
+        </div>
 
-      </ul>
+      </div>
 
     </ul>    
 

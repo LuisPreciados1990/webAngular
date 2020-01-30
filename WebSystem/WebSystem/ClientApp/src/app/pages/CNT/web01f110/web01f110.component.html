@@ -1,62 +1,51 @@
-<app-spinner></app-spinner>
+<div class="formulariosWebs">
+  <form class="text-center p-1 mt-4" #forma="ngForm">
+    <div class="animated fadeInRight" id="container1">
+      <div id="buttonHeadeSecond">
+        
+        <div id="buscar"><span class="icon-zoom-in"></span>
+          <input type="search" aria-label="Search" placeholder="Busqueda" (keyup)="buscarCta(txtNombre.value)" id="txtNombre" #txtNombre autocomplete="off">
+          <div (click)="openForm('')" id="anadir">
 
-<form class="text-center p-1 mt-4" #forma="ngForm" *ngIf="false">
-  <div class="container" id="navigationSS">
-    <ngb-pagination [(page)]="page"
-                    [pageSize]="pageSize"
-                    [collectionSize]="iplan.length"
-                    [maxSize]="10"
-                    [rotate]="true"
-                    [ellipses]="false"
-                    [boundaryLinks]="true">
-    </ngb-pagination>
-  </div>
-  <div class="container animated fadeInRight" id="container1">
-
-    <div class="row">
-      <div class="col-2">
-        <button type="button" class="btn btn-info" id="btnNew" (click)="openForm('')">
-          <i class="fa fa-plus fa-3x"></i>
-        </button>
+            <span class="icon-plus-3"></span>Añadir
+          </div>
+          <!--<mat-form-field>
+    <input matInput >
+  </mat-form-field>-->
+        </div>
       </div>
-      <div>
-        <mat-form-field>
-          <input matInput placeholder="Busqueda" (keyup)="buscarCta(txtNombre.value)"
-                 id="txtNombre" #txtNombre autocomplete="off">
-        </mat-form-field>
+      <div class="tableXX">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 10%">Código</th>
+              <th style="width: 40%">Nombre</th>
+              <th style="width: 10%">Código Auxiliar</th>
+              <th style="width: 5%"></th>
+              <th style="width: 5%"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let cta of iplan | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+              <td > {{cta.codigo}} </td>
+              <td > {{cta.nombre}} </td>
+              <td > {{cta.codigo_Aux}} </td>
+              <td >
+                <button type="button" class="but1" (click)="openForm(cta.codigo_Aux)">
+                  <span class="icon-edit-2"></span>
+                </button>
+              </td>
+              <td>
+                <button type="button" class="but2" (click)="deleteCta(cta)">
+                  <span class="icon-trash-3"></span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
       </div>
     </div>
-    <div class="tableXX">
-      <table mat-table>
-        <thead>
-          <tr>
-            <th style="width: 10%">Código</th>
-            <th style="width: 40%">Nombre</th>
-            <th style="width: 10%">Código Auxiliar</th>
-            <th style="width: 5%"></th>
-            <th style="width: 5%"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr *ngFor="let cta of iplan | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-            <td mat-cell> {{cta.codigo}} </td>
-            <td mat-cell> {{cta.nombre}} </td>
-            <td mat-cell> {{cta.codigo_Aux}} </td>
-            <td mat-cell>
-              <button type="button" class="btn btn-info" (click)="openForm(cta.codigo_Aux)">
-                <i class="fa fa-pencil-square-o fa-lg"></i>
-              </button>
-            </td>
-            <td mat-cell>
-              <button type="button" class="btn btn-danger" (click)="deleteCta(cta)">
-                <i class="fa fa-times fa-lg"></i>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-
-      </table>
-    </div>
-  </div>
-</form>
+  </form>
+</div>
